@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tambola</title>
+<link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
+<style>
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin: 0;padding:0;min-height: 100%;animation: gradient 30s infinite;}
+.main{padding-top: 100px;}
+.form {display: flex; flex-direction: column; max-width: 400px;margin: 0 auto 30px;}
+table{margin:0 auto;max-width: 500px;font-size: 50px;color:#fff;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);font-family: 'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse: collapse;}
+table td{border:1px #fff solid;width:50px;text-align: center;vertical-align: center;cursor:pointer;}
+table .is-blank{pointer-events: none;}
+table td:hover{background:rgba(255,255,255,0.2);}
+table .is-active{background:rgba(0,0,0,0.2);text-decoration:line-through;}
+table .is-active:hover{background:rgba(0,0,0,0.2);}
+.player{opacity:0;position:fixed;bottom:-200px;}
+</style>
+</head>
+<body>
+	<div class="main">
+        <table id="table">
+            <tbody>
+            <tr>
+                <td class="is-blank" id="cell0"> </td>
+                <td class="is-blank" id="cell1"> </td>
+                <td class="is-blank" id="cell2"> </td>
+                <td class="is-blank" id="cell3"> </td>
+                <td class="is-blank" id="cell4"> </td>
+                <td class="is-blank" id="cell5"> </td>
+                <td class="is-blank" id="cell6"> </td>
+                <td class="is-blank" id="cell7"> </td>
+                <td class="is-blank" id="cell8"> </td>
+            </tr>
+            <tr>
+                <td class="is-blank" id="cell9"> </td>
+                <td class="is-blank" id="cell10"> </td>
+                <td class="is-blank" id="cell11"> </td>
+                <td class="is-blank" id="cell12"> </td>
+                <td class="is-blank" id="cell13"> </td>
+                <td class="is-blank" id="cell14"> </td>
+                <td class="is-blank" id="cell15"> </td>
+                <td class="is-blank" id="cell16"> </td>
+                <td class="is-blank" id="cell17"> </td>
+            </tr>
+            <tr>
+                <td class="is-blank" id="cell18"> </td>
+                <td class="is-blank" id="cell19"> </td>
+                <td class="is-blank" id="cell20"> </td>
+                <td class="is-blank" id="cell21"> </td>
+                <td class="is-blank" id="cell22"> </td>
+                <td class="is-blank" id="cell23"> </td>
+                <td class="is-blank" id="cell24"> </td>
+                <td class="is-blank" id="cell25"> </td>
+                <td class="is-blank" id="cell26"> </td>
+            </tr>
+           </tbody>
+        </table>
+    </div>
+    <audio id="audioclip" class="player" preload="auto">
+        <source src="click.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const table= document.getElementById('table');
+        const audio = document.getElementById("audioclip");
+        audio.volume = 0.4;
+        let tid = urlParams.get('tid').split("-");
+        for(let i=0;i<tid.length;i++){
+            let numbr  = tid[i] == '_' ? '' : tid[i];
+            let cell = document.getElementById("cell"+i);
+            if(numbr){
+                cell.classList.remove('is-blank');
+            }
+            cell.innerHTML=numbr;
+            cell.addEventListener('click', function(){
+                this.classList.toggle('is-active');
+                audio.pause();
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    </script>
+</body>
+</html>

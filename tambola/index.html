@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tambola</title>
+<link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
+<style>
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin: 0;padding:0;min-height: 100%;animation: gradient 30s infinite;}
+.main{padding-top: 100px;}
+.form {display: flex; flex-direction: column; max-width: 400px;margin: 0 auto 30px;}
+.form-field {display: flex;margin-bottom: 50px;justify-content: space-between;}
+.form-field .label{font-size: 40px;}
+.form-field input {border: 2px solid #23d5ab;outline:0;box-shadow: inset 0 0 4px #23d5ab; border-radius: 6px;padding:10px;font-size: 40px; width:90px;}
+.form-field input:focus{border-color:#23a6d5;}
+.form-field .btn{cursor:pointer;padding: 10px;outline:0;border-radius:6px;font-size: 50px;color:#fff;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);background-size:200% 200%;animation: gradient 1s infinite;font-family: 'Uncle Oscar W05 Regular';width:100%;box-shadow: 0 0 2px#fff;border:0;}
+.form-field .btn:active{box-shadow: inset 0 0 6px#000;}
+.tickets{max-width:1000px;margin: 0 auto;padding:0 30px;}
+.ticket-item{background:#fff;padding: 10px;margin-bottom: 20px;box-shadow: 0 0 4px #000;}
+</style>
+</head>
+<body>
+	<div class="main">
+        <div class="form">
+            <div class="form-field">
+                <span class="label">No. of tickets</span> <input type="number" min="1" max="200" value="100" id="tickets" required>
+            </div>
+            <div class="form-field">
+                <button class="btn" id="generateTicket">Generate</button>
+            </div>
+        </div>
+        <div id="ticketDisplay" class="tickets">
+        </div>
+    </div>
+    <script>
+        const tickets = document.getElementById('tickets');
+        tickets.oninput = function () {
+            if (this.value > 200) {
+                this.value = 200; 
+            }
+            if (this.value < 1) {
+                this.value = 1; 
+            }
+        }
+
+        let genTickets = [];
+        const ticketDisplay = document.getElementById('ticketDisplay');
+        function generateTicket(indx) {
+            let ticketItem = {};
+            let numbers = [...Array(90).keys()].map((i) => 1 + i);
+            let ticket = [...Array(3).keys()]
+            .map((row) =>
+                [...Array(9).keys()].map((i) => (i + 1) % 2).sort(() => Math.random() - 0.5)
+            )
+            .map((row) =>
+                row.map((num, i) => {
+                if (num === 1) {
+                    let filtered = numbers.filter((x) => {
+                    switch (i) {
+                        case 0:
+                        return x >= 1 && x <= 9;
+                        case 8:
+                        return x >= 80 && x <= 90;
+                        default:
+                        return x >= i * 10 && x < (i + 1) * 10;
+                    }
+                    });
+                    let element = filtered[Math.floor(Math.random() * filtered.length)];
+                    numbers.splice(numbers.indexOf(element), 1);
+                    return element;
+                }
+                return '_';
+                })
+            );
+
+            for (let i = 0; i < 9; i++) {
+            let col = [ticket[0][i], ticket[1][i], ticket[2][i]]
+                .filter((n) => n !== 0)
+                .sort((a, b) => a - b);
+            for (let j = 0; j < 3; j++) {
+                if (ticket[j][i] !== 0) {
+                ticket[j][i] = col.shift();
+                }
+            }
+            }
+            ticket = ticket.toString();
+            ticketItem.items = ticket;
+            genTickets.push(ticketItem);
+            let tItem = document.createElement('div');
+            tItem.classList.add('ticket-item');
+            tItem.innerHTML = '<a href="https://sumitmann.github.io/tambola/ticket.html?tid='+ ticket.replace(/,/g, '-') +'">Ticket #'+ indx +'</a>';
+            ticketDisplay.append(tItem);
+        }
+
+        const genButton = document.getElementById('generateTicket');
+        genButton.addEventListener('click', function () {
+            for(let i = 0; i < tickets.value; i++) {
+                generateTicket(i);
+            }
+        });
+    </script>
+</body>
+</html>
