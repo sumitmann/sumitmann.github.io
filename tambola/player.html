@@ -7,31 +7,32 @@
 <style>
 @keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
 body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin: 0;padding:0;min-height: 100%;animation: gradient 10s infinite;}
-.main{padding-top: 100px;padding:30px 50px;}
+.main{padding-top: 100px;padding:80px 50px 30px;}
 table{margin:0 auto;font-size: 30px;color:#fff;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);font-family: 'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse: collapse;}
 table td{border:1px #fff solid;width:50px;text-align: center;vertical-align: center;}
 table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line-through;}
 .player{opacity:0;position:fixed;bottom:-200px;}
-.sound{position:fixed;right:20px;bottom:20px;width:50px;height:50px;cursor:pointer;position:fixed;}
-.sound.is-muted{opacity: 0.2;}
-.sound svg {width:100%;height:100%; fill:#fff;}
-.btn{width:300px;cursor:pointer;padding: 10px;outline:0;border-radius:6px;font-size: 30px;margin-bottom: 20px;color:#23a6d5;background:#fff;font-family: 'Uncle Oscar W05 Regular';box-shadow: 0 0 2px#fff;border:0;}
+.actions{position:fixed;right:90px;bottom:20px;width:50px;height:50px;cursor:pointer;position:fixed;}
+.actions.is-refresh{right:20px;opacity: 0.2;}
+.actions.is-muted{opacity: 0.2;}
+.actions svg {width:100%;height:100%; fill:#fff;}
+.btn{width:300px;cursor:pointer;padding: 10px;outline:0;border-radius:6px;font-size: 30px;color:#23a6d5;background:#fff;font-family: 'Uncle Oscar W05 Regular';box-shadow: 0 0 2px#fff;border:0;}
 .btn:active{box-shadow: inset 0 0 6px#000;}
 .is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);background-size:200% 200%;animation: gradient 1s infinite;box-shadow: inset 0 0 6px #000;}
+.generator{display:flex;margin-bottom: 20px;justify-content: space-between;}
+.number{background:rgb(9,132,110, 0.6);width:300px;margin-left:20px;box-shadow:inset 0 0 2px #fff;text-align:center;font-size: 40px;color:#fff;}
 </style>
 </head>
 <body>
-    <div class="sound is-muted" id="muteunmute">
-        <svg viewBox="0 0 480 480"><path d="M278.944 17.577c-5.568-2.656-12.128-1.952-16.928 1.92L106.368 144.009H32c-17.632 0-32 14.368-32 32v128c0 17.664 14.368 32 32 32h74.368l155.616 124.512A16.158 16.158 0 00272 464.009c2.368 0 4.736-.544 6.944-1.6a15.968 15.968 0 009.056-14.4v-416a16.05 16.05 0 00-9.056-14.432zM368.992 126.857c-6.304-6.208-16.416-6.112-22.624.128-6.208 6.304-6.144 16.416.128 22.656C370.688 173.513 384 205.609 384 240.009s-13.312 66.496-37.504 90.368c-6.272 6.176-6.336 16.32-.128 22.624a15.943 15.943 0 0011.36 4.736c4.064 0 8.128-1.536 11.264-4.64C399.328 323.241 416 283.049 416 240.009s-16.672-83.232-47.008-113.152z"/><path d="M414.144 81.769c-6.304-6.24-16.416-6.176-22.656.096-6.208 6.272-6.144 16.416.096 22.624C427.968 140.553 448 188.681 448 240.009s-20.032 99.424-56.416 135.488c-6.24 6.24-6.304 16.384-.096 22.656 3.168 3.136 7.264 4.704 11.36 4.704 4.064 0 8.16-1.536 11.296-4.64C456.64 356.137 480 299.945 480 240.009s-23.36-116.128-65.856-158.24z"/></svg>
-    </div>
 	<div class="main">
         <div class="generator">
-            <button onclick="generate()" class="btn" id="generator">Generate Number</button>
+            <button onclick="generate()" class="btn is-disabled" id="generator">Generate Number</button>
+            <div class="number" id="numbox">-</div>
         </div>
         <table class="table">
             <tr>
             <td id="cell1">1</td>
-            <td id="cell2">3</td>
+            <td id="cell2">2</td>
             <td id="cell3">3</td>
             <td id="cell4">4</td>
             <td id="cell5">5</td>
@@ -143,6 +144,12 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             </tr>
             </table>
     </div>
+    <div class="actions is-muted" id="muteunmute">
+        <svg viewBox="0 0 480 480"><path d="M278.944 17.577c-5.568-2.656-12.128-1.952-16.928 1.92L106.368 144.009H32c-17.632 0-32 14.368-32 32v128c0 17.664 14.368 32 32 32h74.368l155.616 124.512A16.158 16.158 0 00272 464.009c2.368 0 4.736-.544 6.944-1.6a15.968 15.968 0 009.056-14.4v-416a16.05 16.05 0 00-9.056-14.432zM368.992 126.857c-6.304-6.208-16.416-6.112-22.624.128-6.208 6.304-6.144 16.416.128 22.656C370.688 173.513 384 205.609 384 240.009s-13.312 66.496-37.504 90.368c-6.272 6.176-6.336 16.32-.128 22.624a15.943 15.943 0 0011.36 4.736c4.064 0 8.128-1.536 11.264-4.64C399.328 323.241 416 283.049 416 240.009s-16.672-83.232-47.008-113.152z"/><path d="M414.144 81.769c-6.304-6.24-16.416-6.176-22.656.096-6.208 6.272-6.144 16.416.096 22.624C427.968 140.553 448 188.681 448 240.009s-20.032 99.424-56.416 135.488c-6.24 6.24-6.304 16.384-.096 22.656 3.168 3.136 7.264 4.704 11.36 4.704 4.064 0 8.16-1.536 11.296-4.64C456.64 356.137 480 299.945 480 240.009s-23.36-116.128-65.856-158.24z"/></svg>
+    </div>
+    <div class="actions is-refresh" id="refresh">
+        <svg viewBox="0 0 341.333 341.333"><path d="M341.227 149.333V0l-50.133 50.133C260.267 19.2 217.707 0 170.56 0 76.267 0 .107 76.373.107 170.667s76.16 170.667 170.453 170.667c79.467 0 146.027-54.4 164.907-128h-44.373c-17.6 49.707-64.747 85.333-120.533 85.333-70.72 0-128-57.28-128-128s57.28-128 128-128c35.307 0 66.987 14.72 90.133 37.867l-68.8 68.8h149.333z"/></svg>
+    </div>
     <audio id="audioclip" class="player" preload="auto" muted>
     </audio>
     <script>
@@ -202,7 +209,26 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             "53.mp3",
             "54.mp3",
             "55.mp3",
-            "56.mp3"
+            "56.mp3",
+            "57.mp3",
+            "58.mp3",
+            "59.mp3",
+            "60.mp3",
+            "61.mp3",
+            "62.mp3",
+            "63.mp3",
+            "64.mp3",
+            "65.mp3",
+            "66.mp3",
+            "67.mp3",
+            "68.mp3",
+            "69.mp3",
+            "70.mp3",
+            "71.mp3",
+            "72.mp3",
+            "73.mp3",
+            "74.mp3",
+            "75.mp3"
         ];
 
         function preloadAudio(url) {
@@ -216,17 +242,31 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             loaded++;
         }
 
+        let numBox = document.getElementById('numbox');
+
         var player = document.getElementById('audioclip');
             
         let speaker = document.getElementById('muteunmute');
+        let refresh = document.getElementById('refresh');
         speaker.addEventListener('click', function(){
             speaker.classList.toggle('is-muted');
+            document.getElementById('generator').classList.remove('is-disabled');
             player.muted = !player.muted;
             if(loaded != audioFiles.length) {
                 for (let i in audioFiles) {
                     preloadAudio(audioFiles[i]);
                 }
             }
+        });
+
+        refresh.addEventListener('click', function(){
+            for (let i in selectedNumbers) {
+               document.getElementById('cell'+selectedNumbers[i]).classList.remove('is-active');
+            }
+            counter = 0;
+            selectedNumbers = [];
+            localStorage.removeItem('checked');
+            numBox.textContent = '-';
         });
 
         function play(index) {
@@ -236,23 +276,48 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
 
 
         let counter=0;
-        let check_array = [0];
-        let temp = 0;
+        let selectedNumbers = [];
+        if(localStorage.checked) {
+            selectedNumbers = JSON.parse(localStorage.checked);
+            counter = selectedNumbers.length;
+            for (let i in selectedNumbers) {
+               document.getElementById('cell'+selectedNumbers[i]).classList.add('is-active');
+            }
+            numBox.textContent = selectedNumbers[selectedNumbers.length-1];
+        }
+
+        function generateRandom() {
+            let min = 1;
+            let max = 75;
+            let random = Math.floor(Math.random() * (max - min + 1)) + min;
+            return random;
+        }
+        let interval = '';
+        function animateText() {
+            interval = setInterval(function () {
+                let num = generateRandom();
+                numBox.textContent = num;
+            }, 300);
+        }
         function generate(){
             document.getElementById('generator').classList.add('is-disabled');
-            speaker.classList.remove('is-muted')
-            if(counter==56){
+            animateText();
+            if(counter==84){
             alert("All the numbers have been generated");
             return;
             }
-            while(check_array.includes(temp)){
-                    temp = Math.floor(Math.random()*56)+1;
-                    }
-            check_array[counter] = temp;
-            play(temp);
+            let random = generateRandom();
+            while (selectedNumbers.indexOf(random) > -1) {
+                random = bingo.generateRandom();
+            }
+            play(random);
             player.onended = function() {
-                document.getElementById('cell'+temp).classList.add('is-active');
+                document.getElementById('cell'+random).classList.add('is-active');
                 document.getElementById('generator').classList.remove('is-disabled');
+                clearInterval(interval);
+                selectedNumbers.push(random);
+                localStorage.setItem("checked", JSON.stringify(selectedNumbers));
+                numBox.textContent = random;
             };
             counter++;
         }
