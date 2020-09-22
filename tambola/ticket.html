@@ -68,15 +68,30 @@ table .is-active:hover{background:rgba(0,0,0,0.2);}
         const audio = document.getElementById("audioclip");
         audio.volume = 0.4;
         let tid = urlParams.get('tid').split("-");
+        let selectItems = [];
         for(let i=0;i<tid.length;i++){
             let numbr  = tid[i] == '_' ? '' : tid[i];
             let cell = document.getElementById("cell"+i);
             if(numbr){
                 cell.classList.remove('is-blank');
+                cell.innerHTML=numbr;
+                if (localStorage.ticket) {
+                    selectItems = JSON.parse(localStorage.ticket);
+                    if(selectItems.indexOf(numbr)> -1) {
+                        cell.classList.add('is-active');
+                    }
+                }
             }
-            cell.innerHTML=numbr;
             cell.addEventListener('click', function(){
                 this.classList.toggle('is-active');
+                if(this.classList.contains('is-active')) {
+                    selectItems.push(this.textContent); 
+                } else {
+                    let rIndex = selectItems.indexOf(this.textContent);
+                    selectedItems = selectItems.splice(rIndex, 1);
+                }
+                
+                localStorage.setItem("ticket", JSON.stringify(selectItems));
                 audio.pause();
                 audio.currentTime = 0;
                 audio.play();
