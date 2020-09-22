@@ -308,7 +308,7 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             }
             let random = generateRandom();
             while (selectedNumbers.indexOf(random) > -1) {
-                random = bingo.generateRandom();
+                random = generateRandom();
             }
             play(random);
             player.onended = function() {
