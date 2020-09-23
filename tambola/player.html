@@ -21,21 +21,34 @@ table{margin:0 auto;font-size: 30px;color:#fff;background:linear-gradient(-45deg
 table td{border:1px #fff solid;width:50px;text-align: center;vertical-align: center;}
 table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line-through;}
 .player{opacity:0;position:fixed;bottom:-200px;}
-.actions{position:fixed;right:90px;bottom:20px;width:50px;height:50px;cursor:pointer;position:fixed;}
-.actions.is-refresh{right:20px;opacity: 0.2;}
+.actions{position:fixed;left:50px;bottom:20px;width:50px;height:50px;cursor:pointer;position:fixed;}
+.actions.is-refresh{left:unset;right:50px;opacity: 0.2;}
 .actions.is-muted{opacity: 0.2;}
 .actions svg {width:100%;height:100%; fill:#fff;}
 .btn{width:300px;cursor:pointer;padding: 10px;outline:0;border-radius:6px;font-size: 30px;color:#23a6d5;background:#fff;font-family: 'Uncle Oscar W05 Regular';box-shadow: 0 0 2px#fff;border:0;}
 .btn:active{box-shadow: inset 0 0 6px#000;}
 .is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);background-size:200% 200%;animation: gradient 1s infinite;box-shadow: inset 0 0 6px #000;}
-.generator{display:flex;margin-bottom: 20px;justify-content: space-between;}
-.number{background:rgb(9,132,110, 0.6);width:300px;margin-left:20px;box-shadow:inset 0 0 2px #fff;text-align:center;font-size: 40px;color:#fff;}
+.generator{display:flex;margin-bottom: 20px;}
+.player-actions {display: none;align-items: center;width:50px;padding:5px 20px;}
+.player-actions.is-active{display:flex;cursor:pointer;}
+.player-actions svg {width:50px;height:50px;fill:#fff;}
+.number{margin-left: auto;background:rgb(9,132,110, 0.6);width:300px;box-shadow:inset 0 0 2px #fff;text-align:center;font-size: 40px;color:#fff;}
+.replay.is-active{margin-left: auto;}
+.replay.is-active + .number {margin-left: unset;}
+.duration{position:fixed;left:0;right:50px;top:0;padding:5px 0;text-align:right;font-size: 20px;color:#fff;}
 </style>
 </head>
 <body>
 	<div class="main">
+        <div class="duration" id="duration"></div>
         <div class="generator">
             <button onclick="generate()" class="btn is-disabled" id="generator">Generate Number</button>
+            <div class="player-actions fast-forward" id="fast-forward">
+                <svg viewBox="0 0 373.333 373.333"><path d="M0 314.667l181.333-128L0 58.667zM192 58.667v256l181.333-128z"/></svg>
+            </div>
+            <div class="player-actions replay" id="replay">
+                <svg viewBox="0 0 512 512"><path d="M512 256c0 68.379-26.629 132.668-74.98 181.02C388.668 485.37 324.379 512 256 512s-132.668-26.629-181.02-74.98C26.63 388.668 0 324.379 0 256h40c0 119.102 96.898 216 216 216s216-96.898 216-216S375.102 40 256 40c-77.902 0-148.23 41.145-186.57 107H130v40H0V57h40v61.492c18.473-29.012 42.676-54.094 71.48-73.828C154.137 15.445 204.11 0 256 0c68.379 0 132.668 26.629 181.02 74.98C485.37 123.332 512 187.621 512 256zm-150.027.566L192 354.786V158.343zM232 285.476l50.027-28.91L232 227.656zm0 0"/></svg>
+            </div>
             <div class="number" id="numbox">-</div>
         </div>
         <table class="table">
@@ -266,15 +279,18 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             loaded++;
         }
 
-        let numBox = document.getElementById('numbox');
+        const numBox = document.getElementById('numbox');
 
-        var player = document.getElementById('audioclip');
-            
-        let speaker = document.getElementById('muteunmute');
-        let refresh = document.getElementById('refresh');
+        const player = document.getElementById('audioclip');
+        const gBtn = document.getElementById('generator');    
+        const speaker = document.getElementById('muteunmute');
+        const refresh = document.getElementById('refresh');
+        const ff = document.getElementById('fast-forward');
+        const replay = document.getElementById('replay');
+        const duration = document.getElementById('duration');
         speaker.addEventListener('click', function(){
             speaker.classList.toggle('is-muted');
-            document.getElementById('generator').classList.remove('is-disabled');
+            gBtn.classList.remove('is-disabled');
             player.muted = !player.muted;
             if(loaded != audioFiles.length) {
                 for (let i in audioFiles) {
@@ -295,9 +311,35 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             }
         });
 
+        ff.addEventListener('click', function(){
+            player.playbackRate = 1.5;
+            this.classList.remove('is-active');
+        });
+
+        replay.addEventListener('click', function(){
+            if(speaker.classList.contains('is-muted')) {
+                alert('Please activate speaker icon');
+            } else {
+                ff.classList.add('is-active');
+                this.classList.remove('is-active');
+                gBtn.classList.add('is-disabled');
+                play(numBox.textContent);
+                player.onended = function() {
+                    ff.classList.remove('is-active');
+                    replay.classList.add('is-active');
+                    gBtn.classList.remove('is-disabled');
+                    duration.textContent = '';
+                };
+            }
+    
+        });
+
         function play(index) {
             player.src = audioFiles[index];
             player.play();
+            player.onloadedmetadata = function() {
+                duration.textContent = "Song Duration:  " + Math.floor(player.duration) + ' sec';
+            };
         }
 
 
@@ -310,6 +352,7 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
                document.getElementById('cell'+selectedNumbers[i]).classList.add('is-active');
             }
             numBox.textContent = selectedNumbers[selectedNumbers.length-1];
+            replay.classList.add('is-active');
         }
 
         function generateRandom() {
@@ -326,8 +369,10 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             }, 300);
         }
         function generate(){
-            document.getElementById('generator').classList.add('is-disabled');
+            gBtn.classList.add('is-disabled');
             animateText();
+            replay.classList.remove('is-active');
+            ff.classList.add('is-active');
             if(counter==90){
             alert("All the numbers have been generated");
             return;
@@ -340,17 +385,22 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
                 play(random);
                 player.onended = function() {
                     document.getElementById('cell'+random).classList.add('is-active');
-                    document.getElementById('generator').classList.remove('is-disabled');
+                    gBtn.classList.remove('is-disabled');
                     clearInterval(interval);
                     selectedNumbers.push(random);
                     localStorage.setItem("checked", JSON.stringify(selectedNumbers));
                     numBox.textContent = random;
+                    ff.classList.remove('is-active');
+                    replay.classList.add('is-active');
+                    duration.textContent =  '';
                 };
                 counter++;
             }else {
-                document.getElementById('generator').classList.remove('is-disabled');
+                gBtn.classList.remove('is-disabled');
                 clearInterval(interval);
                 numBox.textContent = selectedNumbers[selectedNumbers.length-1];
+                ff.classList.remove('is-active');
+                duration.textContent =  '';
             }
         }
         
