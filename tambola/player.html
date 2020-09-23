@@ -14,28 +14,7 @@
 <title>Tambola</title>
 <link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
 <style>
-@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin: 0;padding:0;min-height: 100%;animation: gradient 10s infinite;}
-.main{padding-top: 100px;padding:80px 50px 30px;}
-table{margin:0 auto;font-size: 30px;color:#fff;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);font-family: 'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse: collapse;}
-table td{border:1px #fff solid;width:50px;text-align: center;vertical-align: center;}
-table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line-through;}
-.player{opacity:0;position:fixed;bottom:-200px;}
-.actions{position:fixed;left:50px;bottom:20px;width:50px;height:50px;cursor:pointer;position:fixed;}
-.actions.is-refresh{left:unset;right:50px;opacity: 0.2;}
-.actions.is-muted{opacity: 0.2;}
-.actions svg {width:100%;height:100%; fill:#fff;}
-.btn{width:300px;cursor:pointer;padding: 10px;outline:0;border-radius:6px;font-size: 30px;color:#23a6d5;background:#fff;font-family: 'Uncle Oscar W05 Regular';box-shadow: 0 0 2px#fff;border:0;}
-.btn:active{box-shadow: inset 0 0 6px#000;}
-.is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);background-size:200% 200%;animation: gradient 1s infinite;box-shadow: inset 0 0 6px #000;}
-.generator{display:flex;margin-bottom: 20px;}
-.player-actions {display: none;align-items: center;width:50px;padding:5px 20px;}
-.player-actions.is-active{display:flex;cursor:pointer;}
-.player-actions svg {width:50px;height:50px;fill:#fff;}
-.number{margin-left: auto;background:rgb(9,132,110, 0.6);width:300px;box-shadow:inset 0 0 2px #fff;text-align:center;font-size: 40px;color:#fff;}
-.replay.is-active{margin-left: auto;}
-.replay.is-active + .number {margin-left: unset;}
-.duration{position:fixed;left:0;right:50px;top:0;padding:5px 0;text-align:right;font-size: 20px;color:#fff;}
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;min-height:100%;animation:gradient 10s infinite}.main{padding:80px 50px 30px}table{margin:0 auto;font-size:30px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);font-family:'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse:collapse}table td{border:1px #fff solid;width:50px;text-align:center;vertical-align:center}table .is-active{background:rgba(0,0,0,0.5);color:#23d5ab;text-decoration:line-through}.player{opacity:0;position:fixed;bottom:-200px}.actions{position:fixed;left:50px;bottom:20px;width:50px;height:50px;cursor:pointer;position:fixed}.actions.is-refresh{left:unset;right:50px;opacity:.2}.actions.is-muted{opacity:.2}.actions svg{width:100%;height:100%;fill:#fff}.btn{width:300px;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:30px;color:#23a6d5;background:#fff;font-family:'Uncle Oscar W05 Regular';box-shadow:0 0 2px#fff;border:0}.btn:active{box-shadow:inset 0 0 6px#000}.is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 1s infinite;box-shadow:inset 0 0 6px #000}.generator{display:flex;margin-bottom:20px}.player-actions{display:none;align-items:center;width:50px;padding:5px 20px}.player-actions.is-active{display:flex;cursor:pointer}.player-actions svg{width:50px;height:50px;fill:#fff}.number{margin-left:auto;background:#09846e;width:300px;box-shadow:inset 0 0 2px #fff;text-align:center;font-size:40px;color:#fff}.replay.is-active{margin-left:auto}.replay.is-active + .number{margin-left:unset}.duration{position:fixed;left:0;right:50px;top:0;padding:5px 0;text-align:right;font-size:20px;color:#fff}
 </style>
 </head>
 <body>
