@@ -231,7 +231,19 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             "75.mp3",
             "76.mp3",
             "77.mp3",
-            "78.mp3"
+            "78.mp3",
+            "79.mp3",
+            "80.mp3",
+            "81.mp3",
+            "82.mp3",
+            "83.mp3",
+            "84.mp3",
+            "85.mp3",
+            "86.mp3",
+            "87.mp3",
+            "88.mp3",
+            "89.mp3",
+            "90.mp3"
         ];
 
         function preloadAudio(url) {
@@ -293,7 +305,7 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
 
         function generateRandom() {
             let min = 1;
-            let max = 78;
+            let max = 90;
             let random = Math.floor(Math.random() * (max - min + 1)) + min;
             return random;
         }
@@ -307,7 +319,7 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
         function generate(){
             document.getElementById('generator').classList.add('is-disabled');
             animateText();
-            if(counter==84){
+            if(counter==90){
             alert("All the numbers have been generated");
             return;
             }
