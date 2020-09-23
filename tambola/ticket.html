@@ -13,11 +13,12 @@
 <title>Tambola</title>
 <link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
 <style>
-@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;min-height:100%;animation:gradient 30s infinite}.main{padding-top:100px}table{margin:0 auto;max-width:500px;font-size:50px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);font-family:'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse:collapse}table td{border:1px #fff solid;width:50px;text-align:center;vertical-align:center;cursor:pointer}table .is-blank{pointer-events:none}table td:hover{background:rgba(255,255,255,0.2)}table .is-active{background:rgba(0,0,0,0.2);text-decoration:line-through}table .is-active:hover{background:rgba(0,0,0,0.2)}.player{opacity:0;position:fixed;bottom:-200px}
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;min-height:100%;animation:gradient 30s infinite}.main{padding-top:100px}.form{display:flex;flex-direction:column;max-width:400px;margin:0 auto 30px}table{margin:0 auto;max-width:500px;font-size:50px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);font-family:'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse:collapse}table td{border:1px #fff solid;width:50px;text-align:center;vertical-align:center;cursor:pointer}table .is-blank{pointer-events:none}table td:hover{background:rgba(255,255,255,.2)}table .is-active{background:rgba(0,0,0,.2);text-decoration:line-through}table .is-active:hover{background:rgba(0,0,0,.2)}.player{opacity:0;position:fixed;bottom:-200px}.ticket-num{font-size:20px;color:#fff;max-width:500px;margin:0 auto}
 </style>
 </head>
 <body>
-	<div class="main">
+     <div class="main">
+        <div class="ticket-num" id="tnum"></div>
         <table id="table">
             <tbody>
             <tr>
@@ -60,7 +61,7 @@
         <source src="click.mp3" type="audio/mpeg">
     </audio>
     <script>
-        const queryString=window.location.search,urlParams=new URLSearchParams(queryString),table=document.getElementById("table"),audio=document.getElementById("audioclip");audio.volume=.4;let tid=urlParams.get("tid").split("-"),selectItems=[];for(let e=0;e<tid.length;e++){let t="_"==tid[e]?"":tid[e],s=document.getElementById("cell"+e);t&&(s.classList.remove("is-blank"),s.innerHTML=t,localStorage.ticket&&(selectItems=JSON.parse(localStorage.ticket)).indexOf(t)>-1&&s.classList.add("is-active")),s.addEventListener("click",function(){if(this.classList.toggle("is-active"),this.classList.contains("is-active"))selectItems.push(this.textContent);else{let e=selectItems.indexOf(this.textContent);selectedItems=selectItems.splice(e,1)}localStorage.setItem("ticket",JSON.stringify(selectItems)),audio.pause(),audio.currentTime=0,audio.play()})}
+      const queryString=window.location.search,urlParams=new URLSearchParams(queryString),table=document.getElementById("table"),audio=document.getElementById("audioclip"),tnumber=document.getElementById("tnum");audio.volume=.4;const tid=urlParams.get("tid").split("-");let tnum="";tnum=localStorage.tnum?localStorage.tnum:urlParams.get("tnum"),localStorage.setItem("tnum",tnum),tnumber.textContent="Ticket #"+tnum;let selectItems=[];for(let t=0;t<tid.length;t++){let e="_"==tid[t]?"":tid[t],s=document.getElementById("cell"+t);e&&(s.classList.remove("is-blank"),s.innerHTML=e,localStorage.ticket&&(selectItems=JSON.parse(localStorage.ticket)).indexOf(e)>-1&&s.classList.add("is-active")),s.addEventListener("click",function(){if(this.classList.toggle("is-active"),this.classList.contains("is-active"))selectItems.push(this.textContent);else{let t=selectItems.indexOf(this.textContent);selectedItems=selectItems.splice(t,1)}localStorage.setItem("ticket",JSON.stringify(selectItems)),audio.pause(),audio.currentTime=0,audio.play()})}
     </script>
 </body>
 </html>
