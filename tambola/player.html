@@ -228,7 +228,10 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             "72.mp3",
             "73.mp3",
             "74.mp3",
-            "75.mp3"
+            "75.mp3",
+            "76.mp3",
+            "77.mp3",
+            "78.mp3"
         ];
 
         function preloadAudio(url) {
@@ -260,13 +263,15 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
         });
 
         refresh.addEventListener('click', function(){
-            for (let i in selectedNumbers) {
-               document.getElementById('cell'+selectedNumbers[i]).classList.remove('is-active');
+            if (window.confirm("Are you sure?")) { 
+                for (let i in selectedNumbers) {
+                document.getElementById('cell'+selectedNumbers[i]).classList.remove('is-active');
+                }
+                counter = 0;
+                selectedNumbers = [];
+                localStorage.removeItem('checked');
+                numBox.textContent = '-';
             }
-            counter = 0;
-            selectedNumbers = [];
-            localStorage.removeItem('checked');
-            numBox.textContent = '-';
         });
 
         function play(index) {
@@ -288,7 +293,7 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
 
         function generateRandom() {
             let min = 1;
-            let max = 75;
+            let max = 78;
             let random = Math.floor(Math.random() * (max - min + 1)) + min;
             return random;
         }
@@ -310,16 +315,22 @@ table .is-active{background:rgba(0,0,0,0.5);; color:#23d5ab;text-decoration:line
             while (selectedNumbers.indexOf(random) > -1) {
                 random = generateRandom();
             }
-            play(random);
-            player.onended = function() {
-                document.getElementById('cell'+random).classList.add('is-active');
+            if(random) {
+                play(random);
+                player.onended = function() {
+                    document.getElementById('cell'+random).classList.add('is-active');
+                    document.getElementById('generator').classList.remove('is-disabled');
+                    clearInterval(interval);
+                    selectedNumbers.push(random);
+                    localStorage.setItem("checked", JSON.stringify(selectedNumbers));
+                    numBox.textContent = random;
+                };
+                counter++;
+            }else {
                 document.getElementById('generator').classList.remove('is-disabled');
                 clearInterval(interval);
-                selectedNumbers.push(random);
-                localStorage.setItem("checked", JSON.stringify(selectedNumbers));
-                numBox.textContent = random;
-            };
-            counter++;
+                numBox.textContent = selectedNumbers[selectedNumbers.length-1];
+            }
         }
         
         

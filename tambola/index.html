@@ -45,7 +45,7 @@ body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#e
     <script>
         const tickets = document.getElementById('tickets');
         tickets.oninput = function () {
-            if (this.value > 100) {
+            if (this.value > 1000) {
                 this.value = 1000; 
             }
             if (this.value < 1) {
@@ -114,11 +114,13 @@ body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#e
             localStorage.setItem('tickets', JSON.stringify(genTickets));
         });
         refresh.addEventListener('click', function () {
-            genButton.classList.remove('is-disabled');
-            refresh.style.display = '';
-            ticketDisplay.innerHTML = '';
-            localStorage.removeItem('tickets');
-            tickets.value = 1;
+            if (window.confirm("Are you sure?")) { 
+                genButton.classList.remove('is-disabled');
+                refresh.style.display = '';
+                ticketDisplay.innerHTML = '';
+                localStorage.removeItem('tickets');
+                tickets.value = 1;
+            }
         });
 
         if (localStorage.tickets) {
