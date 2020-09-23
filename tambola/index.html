@@ -7,29 +7,13 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-178763269-1');
 </script>
 <meta charset="UTF-8">
 <title>Tambola</title>
 <link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
 <style>
-@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin: 0;padding:0;min-height: 100%;animation: gradient 30s infinite;}
-.main{padding-top: 100px;}
-.form {display: flex; flex-direction: column; max-width:500px;margin: 0 auto 30px;}
-.form-field {display: flex;margin-bottom: 50px;}
-.form-field .label{font-size: 40px;}
-.form-field input {margin-left: auto;border: 2px solid #23d5ab;outline:0;box-shadow: inset 0 0 4px #23d5ab; border-radius: 6px;padding:10px;font-size: 40px; width:110px;}
-.form-field input:focus{border-color:#23a6d5;}
-.btn{text-decoration:none; text-align:center;cursor:pointer;padding: 10px;outline:0;border-radius:6px;font-size: 40px;color:#fff;background:linear-gradient(-45deg,#23d5ab, #23a6d5, #e73c7e, #ee7752);background-size:200% 200%;animation: gradient 1s infinite;font-family: 'Uncle Oscar W05 Regular';width:100%;box-shadow: 0 0 2px#fff;border:0;}
-.btn.is-disabled{opacity: 0.5;cursor:default;pointer-events: none;animation:none;}
-.btn-alt{animation: gradient 10s infinite;}
-.btn-small{display:none;padding:0; width: 76px;height:76px;background:#23d5ab;padding:15px;margin-left:10px;}
-.btn-small svg { fill: #fff;}
-.btn:active{box-shadow: inset 0 0 6px#000;}
-.tickets{max-width:1000px;margin: 0 auto;padding:0 30px;}
-.ticket-item{background:#fff;padding: 10px;margin-bottom: 20px;box-shadow: 0 0 4px #000;}
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;min-height:100%;animation:gradient 30s infinite}.main{padding-top:100px}.form{display:flex;flex-direction:column;max-width:500px;margin:0 auto 30px}.form-field{display:flex;margin-bottom:50px}.form-field .label{font-size:40px}.form-field input{margin-left:auto;border:2px solid #23d5ab;outline:0;box-shadow:inset 0 0 4px #23d5ab;border-radius:6px;padding:10px;font-size:40px;width:110px}.form-field input:focus{border-color:#23a6d5}.btn{text-decoration:none;text-align:center;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:40px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 1s infinite;font-family:'Uncle Oscar W05 Regular';width:100%;box-shadow:0 0 2px#fff;border:0}.btn.is-disabled{opacity:.5;cursor:default;pointer-events:none;animation:none}.btn-alt{animation:gradient 10s infinite}.btn-small{display:none;padding:0;width:76px;height:76px;background:#23d5ab;padding:15px;margin-left:10px}.btn-small svg{fill:#fff}.btn:active{box-shadow:inset 0 0 6px#000}.tickets{max-width:1000px;margin:0 auto;padding:0 30px}.ticket-item{background:#fff;padding:10px;margin-bottom:20px;box-shadow:0 0 4px #000}
 </style>
 </head>
 <body>
@@ -52,101 +36,7 @@ body{font-family: 'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#e
         </div>
     </div>
     <script>
-        const tickets = document.getElementById('tickets');
-        tickets.oninput = function () {
-            if (this.value > 1000) {
-                this.value = 1000; 
-            }
-            if (this.value < 1) {
-                this.value = 1; 
-            }
-        }
-
-        let genTickets = [];
-        const ticketDisplay = document.getElementById('ticketDisplay');
-        function generateTicket(indx) {
-            let numbers = [...Array(90).keys()].map((i) => 1 + i);
-            let ticket = [...Array(3).keys()]
-            .map((row) =>
-                [...Array(9).keys()].map((i) => (i + 1) % 2).sort(() => Math.random() - 0.5)
-            )
-            .map((row) =>
-                row.map((num, i) => {
-                if (num === 1) {
-                    let filtered = numbers.filter((x) => {
-                    switch (i) {
-                        case 0:
-                        return x >= 1 && x <= 9;
-                        case 8:
-                        return x >= 80 && x <= 90;
-                        default:
-                        return x >= i * 10 && x < (i + 1) * 10;
-                    }
-                    });
-                    let element = filtered[Math.floor(Math.random() * filtered.length)];
-                    numbers.splice(numbers.indexOf(element), 1);
-                    return element;
-                }
-                return '_';
-                })
-            );
-
-            for (let i = 0; i < 9; i++) {
-            let col = [ticket[0][i], ticket[1][i], ticket[2][i]]
-                .filter((n) => n !== 0)
-                .sort((a, b) => a - b);
-            for (let j = 0; j < 3; j++) {
-                if (ticket[j][i] !== 0) {
-                ticket[j][i] = col.shift();
-                }
-            }
-            }
-            genTickets.push(ticket);
-            ticket = ticket.toString();
-            let tItem = document.createElement('div');
-            tItem.classList.add('ticket-item');
-            let url = window.location.href.replace("index.html", "ticket.html");
-            url = url + '?tid='+ ticket.replace(/,/g, '-');
-            tItem.innerHTML = 'Ticket #'+(indx + 1)+' - <a href="'+url+'" target="_blank">'+ url +'</a>';
-            ticketDisplay.append(tItem);
-        }
-
-        const genButton = document.getElementById('generateTicket');
-        const refresh = document.getElementById('refresh');
-        genButton.addEventListener('click', function () {
-            genButton.classList.add('is-disabled');
-            refresh.style.display = 'initial';
-            ticketDisplay.innerHTML = '';
-            for(let i = 0; i < tickets.value; i++) {
-                generateTicket(i);
-            }
-            localStorage.setItem('tickets', JSON.stringify(genTickets));
-        });
-        refresh.addEventListener('click', function () {
-            if (window.confirm("Are you sure?")) { 
-                genButton.classList.remove('is-disabled');
-                refresh.style.display = '';
-                ticketDisplay.innerHTML = '';
-                localStorage.removeItem('tickets');
-                tickets.value = 1;
-            }
-        });
-
-        if (localStorage.tickets) {
-            let t = JSON.parse(localStorage.tickets);
-            tickets.value = t.length;
-           for(let i = 0; i < t.length; i++){
-            genButton.classList.add('is-disabled');
-            refresh.style.display = 'initial';
-             let url = window.location.href.replace("index.html", "ticket.html");
-            let tk = t[i].toString();
-            let tItem = document.createElement('div');
-            tItem.classList.add('ticket-item');
-            url = url + '?tid='+ tk.replace(/,/g, '-');
-            tItem.innerHTML = 'Ticket #'+(i + 1)+' - <a href="'+url+'" target="_blank">'+ url +'</a>';
-            ticketDisplay.append(tItem);
-           }
-        }
+        const tickets=document.getElementById("tickets");tickets.oninput=function(){this.value>1e3&&(this.value=1e3),this.value<1&&(this.value=1)};let genTickets=[];const ticketDisplay=document.getElementById("ticketDisplay");function generateTicket(e){let t=[...Array(90).keys()].map(e=>1+e),i=[...Array(3).keys()].map(e=>[...Array(9).keys()].map(e=>(e+1)%2).sort(()=>Math.random()-.5)).map(e=>e.map((e,i)=>{if(1===e){let e=t.filter(e=>{switch(i){case 0:return e>=1&&e<=9;case 8:return e>=80&&e<=90;default:return e>=10*i&&e<10*(i+1)}}),n=e[Math.floor(Math.random()*e.length)];return t.splice(t.indexOf(n),1),n}return"_"}));for(let e=0;e<9;e++){let t=[i[0][e],i[1][e],i[2][e]].filter(e=>0!==e).sort((e,t)=>e-t);for(let n=0;n<3;n++)0!==i[n][e]&&(i[n][e]=t.shift())}genTickets.push(i),i=i.toString();let n=document.createElement("div");n.classList.add("ticket-item");let a=window.location.href.replace("index.html","ticket.html");a=a+"?tid="+i.replace(/,/g,"-"),n.innerHTML="Ticket #"+(e+1)+' - <a href="'+a+'" target="_blank">'+a+"</a>",ticketDisplay.append(n)}const genButton=document.getElementById("generateTicket"),refresh=document.getElementById("refresh");if(genButton.addEventListener("click",function(){genButton.classList.add("is-disabled"),refresh.style.display="initial",ticketDisplay.innerHTML="";for(let e=0;e<tickets.value;e++)generateTicket(e);localStorage.setItem("tickets",JSON.stringify(genTickets))}),refresh.addEventListener("click",function(){window.confirm("Are you sure?")&&(genButton.classList.remove("is-disabled"),refresh.style.display="",ticketDisplay.innerHTML="",localStorage.removeItem("tickets"),tickets.value=1)}),localStorage.tickets){let e=JSON.parse(localStorage.tickets);tickets.value=e.length;for(let t=0;t<e.length;t++){genButton.classList.add("is-disabled"),refresh.style.display="initial";let i=window.location.href.replace("index.html","ticket.html"),n=e[t].toString(),a=document.createElement("div");a.classList.add("ticket-item"),i=i+"?tid="+n.replace(/,/g,"-"),a.innerHTML="Ticket #"+(t+1)+' - <a href="'+i+'" target="_blank">'+i+"</a>",ticketDisplay.append(a)}}
     </script>
 </body>
 </html>
