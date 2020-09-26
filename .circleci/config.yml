@@ -16,9 +16,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: 
-          name: "echo an env var that is part of the project"
-          command: echo $MyGitProfile # this env var must be swt within the project
+      - run: echo $MyGitProfile # this is the env variable
 workflows:
   # Name the workflow "print_hello_world"
   version: 1
