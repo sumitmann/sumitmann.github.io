@@ -24,7 +24,7 @@ workflows:
     # Run the print_hello and print_world job in its own container
     jobs:
       - print_envvar
-      - print_hello
+      - print_hello:
           requires:
             - print_envvar
       - print_world:
