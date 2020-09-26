@@ -6,19 +6,21 @@ workflows:
   our_workflow:
     # Run the print_hello and print_world job in its own container
     jobs:
-      - print_hello
-      - print_world:
+      - save_hello_world_output
+      - print_output_file
           requires:
-            - print_hello
+            - save_hello_world_output
 # Orchestrate or schedule a set of jobs
 jobs:
-  print_hello:
+  save_hello_world_output:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "Hello"
-  print_world:
+      - run: echo "text to output here" > output.txt
+  print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo "World"
+      - run: cat output.txt
+      - attach_workspace:
+          at: /tmp/workspace
