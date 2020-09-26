@@ -2,6 +2,11 @@
 version: 2.1
 # Orchestrate or schedule a set of jobs
 jobs:
+  print_envvar:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: echo $MyGitProfile
   print_hello:
     docker:
       - image: circleci/node:13.8.0
@@ -12,19 +17,16 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo "World"
-  test_envvar:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo $MyGitProfile # this is the env variable
 workflows:
   # Name the workflow "print_hello_world"
   version: 1
   print_hello_world:
     # Run the print_hello and print_world job in its own container
     jobs:
-      - test_envvar
+      - print_envvar
       - print_hello
+          requrires:
+            - print_envvar
       - print_world:
           requires:
             - print_hello
