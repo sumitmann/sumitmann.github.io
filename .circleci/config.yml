@@ -4,9 +4,13 @@ version: 2.1
 jobs:
   print_envvar:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/base:2020.01
     steps:
-      - run: echo $MyGitProfile
+      - checkout
+      - run:
+          name: "echo an env var that is part of our project"
+          command: |
+            echo $MyGitProfile
   print_hello:
     docker:
       - image: circleci/node:13.8.0
@@ -20,7 +24,7 @@ jobs:
 workflows:
   # Name the workflow "print_hello_world"
   version: 1
-  print_hello_world:
+  our_workflow:
     # Run the print_hello and print_world job in its own container
     jobs:
       - print_envvar
