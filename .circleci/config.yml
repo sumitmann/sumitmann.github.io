@@ -18,8 +18,7 @@ jobs:
     steps:
       - run: 
           name: "echo an env var that is part of the project"
-          command: |
-            echo $MyGitProfile # this env var must be swt within the project
+          command: echo $MyGitProfile # this env var must be swt within the project
 workflows:
   # Name the workflow "print_hello_world"
   version: 1
