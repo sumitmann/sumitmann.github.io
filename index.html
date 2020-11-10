@@ -7,21 +7,223 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-178763269-1');
 </script>
 <meta charset="UTF-8">
-<title>Sumit Mann - A fun experiment with variable fonts</title>
+<title>Tambola</title>
+<link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
 <style>
-    @font-face{src:url(https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2);font-family:'Compressa VF';font-style:normal}@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}.container{position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;display:flex;align-items:center;justify-content:center}.container h1{margin:0;padding:0;font-family:'Compressa VF';font-size:10vw;line-height:normal;text-align:center;text-shadow:.02em .02em 0 rgba(255,255,255,.3);font-variation-settings:"wght" 700,"wdth" 800;color:#fff;-webkit-transition:.1s;transition:.1s}
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body,html{min-height:100%}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;animation:gradient 30s infinite}.main{padding-bottom:100px}.ticket-gen-panel{padding-top:100px}.form{display:flex;flex-direction:column;max-width:500px;margin:0 auto 30px;height:calc(100vh - 130px);}.form-field{display:flex;margin-bottom:50px}.form-field .label{font-size:40px}.form-field input{margin-left:auto;border:2px solid #23d5ab;outline:0;box-shadow:inset 0 0 4px #23d5ab;border-radius:6px;padding:10px;font-size:40px;width:110px}.form-field input:focus{border-color:#23a6d5}.btn{text-decoration:none;text-align:center;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:40px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 1s infinite;font-family:'Uncle Oscar W05 Regular';width:100%;box-shadow:0 0 2px#fff;border:0}.btn.is-disabled{opacity:.5;cursor:default;pointer-events:none;animation:none}.btn-small{display:none;padding:0;width:76px;height:76px;background:#23d5ab;padding:15px;margin-left:10px}.btn-small svg{fill:#fff}.btn:active{box-shadow:inset 0 0 6px#000}.tickets{max-width:1000px;margin:0 auto;padding:0 30px}.ticket-item{background:#fff;padding:10px;margin-bottom:20px;box-shadow:0 0 4px #000}.player-panel{display:none;padding:80px 50px 0}table{margin:0 auto;font-size:30px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);font-family:'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse:collapse}table td{border:1px #fff solid;width:50px;text-align:center;vertical-align:center}table .is-active{background:rgba(0,0,0,.5);color:#23d5ab;text-decoration:line-through}.player{opacity:0;position:fixed;bottom:-200px}.actions{position:absolute;left:10px;top:10px;width:40px;height:40px;cursor:pointer}.actions.is-refresh{left:unset;right:10px;opacity:.2}.actions.is-muted{opacity:.2}.actions svg{width:100%;height:100%;fill:#fff}.player-panel .form{max-width:610px;margin:unset;padding:0; height: auto}.player-panel .form-field{margin-bottom:20px}.player-panel .form-field input{width:220px;margin-left:0;font-size:20px}.player-panel .form-field .btn{width:180px;margin-left:0;margin-left:30px;font-size:20px}.player-panel .btn{width:300px;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:30px;color:#23a6d5;background:#fff;font-family:'Uncle Oscar W05 Regular';box-shadow:0 0 2px#fff;border:0}.player-panel .btn:active{box-shadow:inset 0 0 6px#000}.player-panel .is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 1s infinite;box-shadow:inset 0 0 6px #000}.generator{display:flex;margin-bottom:20px}.player-actions{display:none;align-items:center;width:50px;padding:5px 20px}.player-actions.is-active{display:flex;cursor:pointer}.player-actions svg{width:50px;height:50px;fill:#fff}.number{margin-left:auto;background:rgb(9,132,110,.6);width:300px;box-shadow:inset 0 0 2px #fff;text-align:center;font-size:40px;color:#fff}.replay.is-active{margin-left:auto}.replay.is-active+.number{margin-left:unset}.duration{position:absolute;left:0;right:100px;top:40px;padding:5px 0;text-align:right;font-size:20px;color:#fff}.ticketValidation{display:flex;flex-direction:column;align-items:center;padding-top:50px}.ticketValidation table{max-width:500px;margin:unset;display:none}
 </style>
 </head>
-<body translate="no">
-	<div class="container">
-		<h1>SUMIT<br/>MANN</h1>
+<body>
+    <div class="main">
+        <div class="ticket-gen-panel" id="main-panel">
+            <div class="actions is-muted" id="playbg">
+                <svg viewBox="0 0 480 480"><path d="M278.944 17.577c-5.568-2.656-12.128-1.952-16.928 1.92L106.368 144.009H32c-17.632 0-32 14.368-32 32v128c0 17.664 14.368 32 32 32h74.368l155.616 124.512A16.158 16.158 0 00272 464.009c2.368 0 4.736-.544 6.944-1.6a15.968 15.968 0 009.056-14.4v-416a16.05 16.05 0 00-9.056-14.432zM368.992 126.857c-6.304-6.208-16.416-6.112-22.624.128-6.208 6.304-6.144 16.416.128 22.656C370.688 173.513 384 205.609 384 240.009s-13.312 66.496-37.504 90.368c-6.272 6.176-6.336 16.32-.128 22.624a15.943 15.943 0 0011.36 4.736c4.064 0 8.128-1.536 11.264-4.64C399.328 323.241 416 283.049 416 240.009s-16.672-83.232-47.008-113.152z"></path><path d="M414.144 81.769c-6.304-6.24-16.416-6.176-22.656.096-6.208 6.272-6.144 16.416.096 22.624C427.968 140.553 448 188.681 448 240.009s-20.032 99.424-56.416 135.488c-6.24 6.24-6.304 16.384-.096 22.656 3.168 3.136 7.264 4.704 11.36 4.704 4.064 0 8.16-1.536 11.296-4.64C456.64 356.137 480 299.945 480 240.009s-23.36-116.128-65.856-158.24z"></path></svg>
+            </div>
+            <div class="form">
+                <div class="form-field">
+                    <span class="label">No. of tickets</span> <input type="number" min="1" max="1000" value="1" id="tickets" required>
+                    <button class="btn btn-small" id="refresh-tickets">
+                        <svg viewBox="0 0 341.333 341.333"><path d="M341.227 149.333V0l-50.133 50.133C260.267 19.2 217.707 0 170.56 0 76.267 0 .107 76.373.107 170.667s76.16 170.667 170.453 170.667c79.467 0 146.027-54.4 164.907-128h-44.373c-17.6 49.707-64.747 85.333-120.533 85.333-70.72 0-128-57.28-128-128s57.28-128 128-128c35.307 0 66.987 14.72 90.133 37.867l-68.8 68.8h149.333z"/></svg>
+                </button>
+                </div>
+                <div class="form-field">
+                    <button class="btn" id="generateTicket">Generate Tickets</button>
+                </div>
+                <div class="form-field">
+                    <button class="btn btn-alt" id="open-player">Open Player</a>
+                </div>
+            </div>
+            <div id="ticketDisplay" class="tickets">
+            </div>
+        </div>
+        <div class="player-panel" id="player-panel">
+            <div class="duration" id="duration"></div>
+        <div class="generator">
+            <button onclick="generate()" class="btn" id="generator">Generate Number</button>
+            <div class="player-actions fast-forward" id="fast-forward">
+                <svg viewBox="0 0 373.333 373.333"><path d="M0 314.667l181.333-128L0 58.667zM192 58.667v256l181.333-128z"/></svg>
+            </div>
+            <div class="player-actions replay" id="replay">
+                <svg viewBox="0 0 512 512"><path d="M512 256c0 68.379-26.629 132.668-74.98 181.02C388.668 485.37 324.379 512 256 512s-132.668-26.629-181.02-74.98C26.63 388.668 0 324.379 0 256h40c0 119.102 96.898 216 216 216s216-96.898 216-216S375.102 40 256 40c-77.902 0-148.23 41.145-186.57 107H130v40H0V57h40v61.492c18.473-29.012 42.676-54.094 71.48-73.828C154.137 15.445 204.11 0 256 0c68.379 0 132.668 26.629 181.02 74.98C485.37 123.332 512 187.621 512 256zm-150.027.566L192 354.786V158.343zM232 285.476l50.027-28.91L232 227.656zm0 0"/></svg>
+            </div>
+            <div class="number" id="numbox">-</div>
+        </div>
+        <table class="table">
+            <tr>
+            <td id="cell1">1</td>
+            <td id="cell2">2</td>
+            <td id="cell3">3</td>
+            <td id="cell4">4</td>
+            <td id="cell5">5</td>
+            <td id="cell6">6</td>
+            <td id="cell7">7</td>
+            <td id="cell8">8</td>
+            <td id="cell9">9</td>
+           <td id="cell10">10</td>
+            </tr><tr>
+            
+            <td id="cell11">11</td>
+            <td id="cell12">12</td>
+            <td id="cell13">13</td>
+            <td id="cell14">14</td>
+            <td id="cell15">15</td>
+            <td id="cell16">16</td>
+            <td id="cell17">17</td>
+            <td id="cell18">18</td>
+           <td id="cell19">19</td>
+            <td id="cell20">20</td>
+            </tr><tr>
+            
+            <td id="cell21">21</td>
+            <td id="cell22">22</td>
+            <td id="cell23">23</td>
+            <td id="cell24">24</td>
+            <td id="cell25">25</td>
+            <td id="cell26">26</td>
+            <td id="cell27">27</td>
+            <td id="cell28">28</td>
+            <td id="cell29">29</td>
+            <td id="cell30">30</td>
+            
+            </tr><tr>
+            
+            <td id="cell31">31</td>
+            <td id="cell32">32</td>
+            <td id="cell33">33</td>
+            <td id="cell34">34</td>
+            <td id="cell35">35</td>
+            <td id="cell36">36</td>
+            <td id="cell37">37</td>
+            <td id="cell38">38</td>
+            <td id="cell39">39</td>
+            <td id="cell40">40</td>
+            </tr><tr>
+            
+            <td id="cell41">41</td>
+            <td id="cell42">42</td>
+            <td id="cell43">43</td>
+            <td id="cell44">44</td>
+            <td id="cell45">45</td>
+            <td id="cell46">46</td>
+            <td id="cell47">47</td>
+            <td id="cell48">48</td>
+            <td id="cell49">49</td>
+            <td id="cell50">50</td>
+            </tr><tr>
+            
+            <td id="cell51">51</td>
+            <td id="cell52">52</td>
+            <td id="cell53">53</td>
+            <td id="cell54">54</td>
+            <td id="cell55">55</td>
+            <td id="cell56">56</td>
+            <td id="cell57">57</td>
+            <td id="cell58">58</td>
+            <td id="cell59">59</td>
+            <td id="cell60">60</td>
+            </tr><tr>
+            
+            <td id="cell61">61</td>
+            <td id="cell62">62</td>
+            <td id="cell63">63</td>
+            <td id="cell64">64</td>
+            <td id="cell65">65</td>
+            <td id="cell66">66</td>
+            <td id="cell67">67</td>
+            <td id="cell68">68</td>
+            <td id="cell69">69</td>
+            <td id="cell70">70</td>
+            </tr><tr>
+            
+            <td id="cell71">71</td>
+            <td id="cell72">72</td>
+           <td id="cell73">73</td>
+            <td id="cell74">74</td>
+            <td id="cell75">75</td>
+            <td id="cell76">76</td>
+            <td id="cell77">77</td>
+            <td id="cell78">78</td>
+            <td id="cell79">79</td>
+            <td id="cell80">80</td>
+            </tr><tr>
+             
+            <td id="cell81">81</td>
+            <td id="cell82">82</td>
+            <td id="cell83">83</td>
+            <td id="cell84">84</td>
+            <td id="cell85">85</td>
+            <td id="cell86">86</td>
+            <td id="cell87">87</td>
+            <td id="cell88">88</td>
+            <td id="cell89">89</td>
+            <td id="cell90">90</td>
+            </tr>
+            
+            </td>
+            </tr>
+            </table>
+            <div class="ticketValidation">
+                <div class="form">
+                    <div class="form-field">
+                        <input type="number" id="ticketnumber" required placeholder="Enter Ticket Number">
+                        <button class="btn" id="showTicket">Show Ticket</button>
+                    </div>
+                </div>
+                <table id="ticketInfo">
+                    <tbody>
+                    <tr>
+                        <td class="is-blank" id="cellinfo0"> </td>
+                        <td class="is-blank" id="cellinfo1"> </td>
+                        <td class="is-blank" id="cellinfo2"> </td>
+                        <td class="is-blank" id="cellinfo3"> </td>
+                        <td class="is-blank" id="cellinfo4"> </td>
+                        <td class="is-blank" id="cellinfo5"> </td>
+                        <td class="is-blank" id="cellinfo6"> </td>
+                        <td class="is-blank" id="cellinfo7"> </td>
+                        <td class="is-blank" id="cellinfo8"> </td>
+                    </tr>
+                    <tr>
+                        <td class="is-blank" id="cellinfo9"> </td>
+                        <td class="is-blank" id="cellinfo10"> </td>
+                        <td class="is-blank" id="cellinfo11"> </td>
+                        <td class="is-blank" id="cellinfo12"> </td>
+                        <td class="is-blank" id="cellinfo13"> </td>
+                        <td class="is-blank" id="cellinfo14"> </td>
+                        <td class="is-blank" id="cellinfo15"> </td>
+                        <td class="is-blank" id="cellinfo16"> </td>
+                        <td class="is-blank" id="cellinfo17"> </td>
+                    </tr>
+                    <tr>
+                        <td class="is-blank" id="cellinfo18"> </td>
+                        <td class="is-blank" id="cellinfo19"> </td>
+                        <td class="is-blank" id="cellinfo20"> </td>
+                        <td class="is-blank" id="cellinfo21"> </td>
+                        <td class="is-blank" id="cellinfo22"> </td>
+                        <td class="is-blank" id="cellinfo23"> </td>
+                        <td class="is-blank" id="cellinfo24"> </td>
+                        <td class="is-blank" id="cellinfo25"> </td>
+                        <td class="is-blank" id="cellinfo26"> </td>
+                    </tr>
+                   </tbody>
+                </table>
+            </div>
+            <div class="actions" id="muteunmute">
+                <svg viewBox="0 0 480 480"><path d="M278.944 17.577c-5.568-2.656-12.128-1.952-16.928 1.92L106.368 144.009H32c-17.632 0-32 14.368-32 32v128c0 17.664 14.368 32 32 32h74.368l155.616 124.512A16.158 16.158 0 00272 464.009c2.368 0 4.736-.544 6.944-1.6a15.968 15.968 0 009.056-14.4v-416a16.05 16.05 0 00-9.056-14.432zM368.992 126.857c-6.304-6.208-16.416-6.112-22.624.128-6.208 6.304-6.144 16.416.128 22.656C370.688 173.513 384 205.609 384 240.009s-13.312 66.496-37.504 90.368c-6.272 6.176-6.336 16.32-.128 22.624a15.943 15.943 0 0011.36 4.736c4.064 0 8.128-1.536 11.264-4.64C399.328 323.241 416 283.049 416 240.009s-16.672-83.232-47.008-113.152z"/><path d="M414.144 81.769c-6.304-6.24-16.416-6.176-22.656.096-6.208 6.272-6.144 16.416.096 22.624C427.968 140.553 448 188.681 448 240.009s-20.032 99.424-56.416 135.488c-6.24 6.24-6.304 16.384-.096 22.656 3.168 3.136 7.264 4.704 11.36 4.704 4.064 0 8.16-1.536 11.296-4.64C456.64 356.137 480 299.945 480 240.009s-23.36-116.128-65.856-158.24z"/></svg>
+            </div>
+            <div class="actions is-refresh" id="refresh">
+                <svg viewBox="0 0 341.333 341.333"><path d="M341.227 149.333V0l-50.133 50.133C260.267 19.2 217.707 0 170.56 0 76.267 0 .107 76.373.107 170.667s76.16 170.667 170.453 170.667c79.467 0 146.027-54.4 164.907-128h-44.373c-17.6 49.707-64.747 85.333-120.533 85.333-70.72 0-128-57.28-128-128s57.28-128 128-128c35.307 0 66.987 14.72 90.133 37.867l-68.8 68.8h149.333z"/></svg>
+            </div>
+            <audio id="audioclip" class="player" preload="auto" muted>
+            </audio>
+            <audio id="playerbg" class="player" preload="auto" muted loop>
+            </audio>
+        </div>
     </div>
-<script>
-document.addEventListener("mousemove",function(e){var t=document.querySelector(".container"),n=t.clientWidth,i=t.clientHeight;769<=n&&(t.querySelector("h1").style["font-variation-settings"]="'wght' "+(200+e.pageY/i*100*5)+", 'wdth' "+e.pageX/n*100*2)});
-</script>
+    <script>
+        const tickets=document.getElementById("tickets");let t="",ticketStart=2320;tickets.oninput=function(){this.value>1e3&&(this.value=1e3),this.value<1&&(this.value=1)};let genTickets=[];const ticketDisplay=document.getElementById("ticketDisplay"),openPlayer=document.getElementById("open-player"),mainPanel=document.getElementById("main-panel"),playerPanel=document.getElementById("player-panel"),showTicket=document.getElementById("showTicket"),ticketnumber=document.getElementById("ticketnumber"),ticketInfo=document.getElementById("ticketInfo");function generateTicket(e){let t=[...Array(90).keys()].map(e=>1+e),n=[...Array(3).keys()].map(e=>[...Array(9).keys()].map(e=>(e+1)%2).sort(()=>Math.random()-.5)).map(e=>e.map((e,n)=>{if(1===e){let e=t.filter(e=>{switch(n){case 0:return e>=1&&e<=9;case 8:return e>=80&&e<=90;default:return e>=10*n&&e<10*(n+1)}}),a=e[Math.floor(Math.random()*e.length)];return t.splice(t.indexOf(a),1),a}return"_"}));for(let e=0;e<9;e++){let t=[n[0][e],n[1][e],n[2][e]].filter(e=>0!==e).sort((e,t)=>e-t);for(let a=0;a<3;a++)0!==n[a][e]&&(n[a][e]=t.shift())}genTickets.push(n),n=n.toString();let a=document.createElement("div");a.classList.add("ticket-item");let i=window.location.href.replace("index.html",""),l=ticketStart+(e+1);i=i+"ticket.html?tnum="+l+"&tid="+n.replace(/,/g,"-"),a.innerHTML="#"+l+' - <a href="'+i+'" target="_blank">'+i+"</a>",ticketDisplay.append(a)}openPlayer.addEventListener("click",function(){if(playerbg.pause(),playerbg.src="",playbg.classList.add("is-muted"),window.scrollTo(0,0),mainPanel.style.display="none",playerPanel.style.display="block",loaded!=audioFiles.length){for(let e in audioFiles)preloadAudio(audioFiles[e]);player.muted=!1}}),showTicket.addEventListener("click",function(){if("Show Ticket"==showTicket.textContent)if(ticketnumber.value>ticketStart&&ticketnumber.value<=ticketStart+t.length){ticketInfo.style.display="table",showTicket.textContent="Hide Ticket",ticketnumber.disabled=!0;let e=ticketnumber.value-ticketStart-1,n=t[e].toString().replace(/,/g,"-").split("-");for(let e=0;e<n.length;e++){let t="_"==n[e]?"":n[e],a=document.getElementById("cellinfo"+e);a.innerHTML="",a.classList.add("is-blank"),a.classList.remove("is-active"),t&&(a.classList.remove("is-blank"),a.innerHTML=t,localStorage.checked)&&JSON.parse(localStorage.checked).indexOf(parseInt(t))>-1&&a.classList.add("is-active")}}else alert("Invalid ticket number");else ticketnumber.value="",showTicket.textContent="Show Ticket",ticketnumber.disabled=!1,ticketInfo.style.display="none"});const genButton=document.getElementById("generateTicket"),refreshTickets=document.getElementById("refresh-tickets");if(genButton.addEventListener("click",function(){genButton.classList.add("is-disabled"),refreshTickets.style.display="initial",ticketDisplay.innerHTML="";for(let e=0;e<tickets.value;e++)generateTicket(e);localStorage.setItem("tickets",JSON.stringify(genTickets)),t=JSON.parse(localStorage.tickets)}),refreshTickets.addEventListener("click",function(){window.confirm("Are you sure?")&&(genButton.classList.remove("is-disabled"),refreshTickets.style.display="",ticketDisplay.innerHTML="",localStorage.removeItem("tickets"),tickets.value=1)}),localStorage.tickets){t=JSON.parse(localStorage.tickets),tickets.value=t.length;for(let e=0;e<t.length;e++){genButton.classList.add("is-disabled"),refreshTickets.style.display="initial";let n=window.location.href.replace("index.html",""),a=t[e].toString(),i=document.createElement("div");i.classList.add("ticket-item");let l=ticketStart+(e+1);n=n+"ticket.html?tnum="+l+"&tid="+a.replace(/,/g,"-"),i.innerHTML="#"+l+' - <a href="'+n+'" target="_blank">'+n+"</a>",ticketDisplay.append(i)}}let audioFiles=["1.mp3","2.mp3","3.mp3","4.mp3","5.mp3","6.mp3","7.mp3","8.mp3","9.mp3","10.mp3","11.mp3","12.mp3","13.mp3","14.mp3","15.mp3","16.mp3","17.mp3","18.mp3","19.mp3","20.mp3","21.mp3","22.mp3","23.mp3","24.mp3","25.mp3","26.mp3","27.mp3","28.mp3","29.mp3","30.mp3","31.mp3","32.mp3","33.mp3","34.mp3","35.mp3","36.mp3","37.mp3","38.mp3","39.mp3","40.mp3","41.mp3","42.mp3","43.mp3","44.mp3","45.mp3","46.mp3","47.mp3","48.mp3","49.mp3","50.mp3","51.mp3","52.mp3","53.mp3","54.mp3","55.mp3","56.mp3","57.mp3","58.mp3","59.mp3","60.mp3","61.mp3","62.mp3","63.mp3","64.mp3","65.mp3","66.mp3","67.mp3","68.mp3","69.mp3","70.mp3","71.mp3","72.mp3","73.mp3","74.mp3","75.mp3","76.mp3","77.mp3","78.mp3","79.mp3","80.mp3","81.mp3","82.mp3","83.mp3","84.mp3","85.mp3","86.mp3","87.mp3","88.mp3","89.mp3","90.mp3"];function preloadAudio(e){let t=new Audio;t.addEventListener("canplaythrough",loadedAudio,!1),t.src=e}let loaded=0;function loadedAudio(){loaded++}const numBox=document.getElementById("numbox"),player=document.getElementById("audioclip"),playerbg=document.getElementById("playerbg"),gBtn=document.getElementById("generator"),speaker=document.getElementById("muteunmute"),playbg=document.getElementById("playbg"),refresh=document.getElementById("refresh"),ff=document.getElementById("fast-forward"),replay=document.getElementById("replay"),duration=document.getElementById("duration");function play(e){player.src=audioFiles[e],player.play(),player.onloadedmetadata=function(){duration.textContent="Song Duration:  "+Math.floor(player.duration)+" sec"}}playbg.addEventListener("click",function(){playbg.classList.toggle("is-muted"),playerbg.src="bg.mp3",playerbg.muted=!playerbg.muted,playerbg.play()}),speaker.addEventListener("click",function(){speaker.classList.toggle("is-muted"),player.muted=!player.muted}),refresh.addEventListener("click",function(){if(window.confirm("Are you sure?")){for(let e in selectedNumbers)document.getElementById("cell"+selectedNumbers[e]).classList.remove("is-active");counter=0,selectedNumbers=[],localStorage.removeItem("checked"),numBox.textContent="-"}}),ff.addEventListener("click",function(){player.playbackRate=1.5,this.classList.remove("is-active")}),replay.addEventListener("click",function(){speaker.classList.contains("is-muted")?alert("Please activate speaker icon"):(ff.classList.add("is-active"),this.classList.remove("is-active"),gBtn.classList.add("is-disabled"),play(numBox.textContent),player.onended=function(){ff.classList.remove("is-active"),replay.classList.add("is-active"),gBtn.classList.remove("is-disabled"),duration.textContent=""})});let counter=0,selectedNumbers=[];if(localStorage.checked){selectedNumbers=JSON.parse(localStorage.checked),counter=selectedNumbers.length;for(let e in selectedNumbers)document.getElementById("cell"+selectedNumbers[e]).classList.add("is-active");numBox.textContent=selectedNumbers[selectedNumbers.length-1],replay.classList.add("is-active")}function generateRandom(){return Math.floor(90*Math.random())+1}let interval="";function animateText(){interval=setInterval(function(){let e=generateRandom();numBox.textContent=e},300)}function generate(){if(gBtn.classList.add("is-disabled"),animateText(),replay.classList.remove("is-active"),ff.classList.add("is-active"),ticketnumber.value="",showTicket.textContent="Show Ticket",ticketnumber.disabled=!1,ticketInfo.style.display="none",90==counter)return void alert("All the numbers have been generated");let e=generateRandom();for(;selectedNumbers.indexOf(e)>-1;)e=generateRandom();e?(play(e),player.onended=function(){document.getElementById("cell"+e).classList.add("is-active"),gBtn.classList.remove("is-disabled"),clearInterval(interval),selectedNumbers.push(e),localStorage.setItem("checked",JSON.stringify(selectedNumbers)),numBox.textContent=e,ff.classList.remove("is-active"),replay.classList.add("is-active"),duration.textContent=""},counter++):(gBtn.classList.remove("is-disabled"),clearInterval(interval),numBox.textContent=selectedNumbers[selectedNumbers.length-1],ff.classList.remove("is-active"),duration.textContent="")}
+    </script>
 </body>
 </html>
