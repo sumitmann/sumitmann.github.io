@@ -61,6 +61,7 @@
             }
             if (loopCount == 5) {
                 this.pause();
+                generateRandomButton.classList.remove('is-disabled');
                 clearInterval(interval);
             }
         });
