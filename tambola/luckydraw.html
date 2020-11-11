@@ -60,6 +60,7 @@
                 ++loopCount;
             }
             if (loopCount == 5) {
+                loopCount = 0;
                 this.pause();
                 generateRandomButton.classList.remove('is-disabled');
                 clearInterval(interval);
