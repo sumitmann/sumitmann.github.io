@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178763269-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-178763269-1');
+</script>
+<meta charset="UTF-8">
+<title>Tambola</title>
+<link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
+<style>
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body,html{min-height:100%}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;animation:gradient 30s infinite}.main{padding-bottom:100px}.ticket-gen-panel{padding-top:100px}.form{display:flex;flex-direction:column;max-width:500px;margin:0 auto 30px;height:calc(100vh - 130px);}.form-field{display:flex;margin-bottom:50px}.form-field .label{font-size:40px}.form-field input{margin-left:auto;border:2px solid #23d5ab;outline:0;box-shadow:inset 0 0 4px #23d5ab;border-radius:6px;padding:10px;font-size:40px;width:110px}.form-field input:focus{border-color:#23a6d5}.btn{text-decoration:none;text-align:center;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:40px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 0.5s infinite;font-family:'Uncle Oscar W05 Regular';width:100%;box-shadow:0 0 2px#fff;border:0}.btn.is-disabled{opacity:.5;cursor:default;pointer-events:none;animation:none}.btn-small{display:none;padding:0;width:76px;height:76px;background:#23d5ab;padding:15px;margin-left:10px}.btn-small svg{fill:#fff}.btn:active{box-shadow:inset 0 0 6px#000}.tickets{max-width:1000px;margin:0 auto;padding:0 30px}.ticket-item{background:#fff;padding:10px;margin-bottom:20px;box-shadow:0 0 4px #000}.player-panel{display:none;padding:80px 50px 0}table{margin:0 auto;font-size:30px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);font-family:'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse:collapse}table td{border:1px #fff solid;width:50px;text-align:center;vertical-align:center}table .is-active{background:rgba(0,0,0,.5);color:#23d5ab;text-decoration:line-through}.player{opacity:0;position:fixed;bottom:-200px}.actions{position:absolute;left:10px;top:10px;width:40px;height:40px;cursor:pointer}.actions.is-refresh{left:unset;right:10px;opacity:.2}.actions.is-muted{opacity:.2}.actions svg{width:100%;height:100%;fill:#fff}.player-panel .form{max-width:610px;margin:unset;padding:0; height: auto}.player-panel .form-field{margin-bottom:20px}.player-panel .form-field input{width:220px;margin-left:0;font-size:20px}.player-panel .form-field .btn{width:180px;margin-left:0;margin-left:30px;font-size:20px}.player-panel .btn{width:300px;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:30px;color:#23a6d5;background:#fff;font-family:'Uncle Oscar W05 Regular';box-shadow:0 0 2px#fff;border:0}.player-panel .btn:active{box-shadow:inset 0 0 6px#000}.player-panel .is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 1s infinite;box-shadow:inset 0 0 6px #000}.generator{display:flex;margin-bottom:20px}.player-actions{display:none;align-items:center;width:50px;padding:5px 20px}.player-actions.is-active{display:flex;cursor:pointer}.player-actions svg{width:50px;height:50px;fill:#fff}.number{background:rgb(9,132,110,.6);box-shadow:inset 0 0 2px #fff;text-align:center;width:100%;padding:60px;font-size:150px;color:#fff}.replay.is-active{margin-left:auto}.replay.is-active+.number{margin-left:unset}.duration{position:absolute;left:0;right:100px;top:40px;padding:5px 0;text-align:right;font-size:20px;color:#fff}.ticketValidation{display:flex;flex-direction:column;align-items:center;padding-top:50px}.ticketValidation table{max-width:500px;margin:unset;display:none}
+</style>
+</head>
+<body>
+    <div class="main">
+        <div class="ticket-gen-panel" id="main-panel">
+            <div class="form">
+                <div class="form-field">
+                    <div class="number" id="numbox">-</div>
+                </div>
+                <div class="form-field">
+                    <button class="btn" id="generateRandom">Get Lucky Number</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <audio id="playerbg" class="player" preload="auto" muted loop>
+    </audio>
+    <script>
+        const generateRandomButton = document.getElementById("generateRandom");
+        const playerbg = document.getElementById("playerbg");
+        const numBox = document.getElementById("numbox");
+        let interval = "";
+        let loopCount = 0;
+
+        function generateRandom() {
+            return Math.floor(190 * Math.random()) + 1
+        } 
+        function animateText() {
+            interval = setInterval(function() {
+                let e = generateRandom();
+                numBox.textContent = e
+            }, 200)
+        }
+        generateRandomButton.addEventListener("click", function() {
+            generateRandomButton.classList.add('is-disabled');
+            playerbg.src = 'bg-s.mp3';
+            playerbg.muted = !playerbg.muted;
+            animateText();
+            playerbg.play();
+        })
+
+        playerbg.addEventListener('timeupdate', function () {
+            if (this.currentTime == 0) {
+                ++loopCount;
+            }
+            if (loopCount == 5) {
+                this.pause();
+                clearInterval(interval);
+            }
+        });
+
+    </script>
+</body>
+</html>
