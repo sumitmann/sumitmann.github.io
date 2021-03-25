@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<title>Lucky Draw</title>
+<link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
+<style>
+@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body,html{min-height:100%}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;animation:gradient 30s infinite}.main{padding-bottom:100px}.ticket-gen-panel{padding-top:100px}.form{display:flex;flex-direction:column;max-width:500px;margin:0 auto 30px;height:calc(100vh - 130px);}.form-field{display:flex;margin-bottom:50px}.form-field .label{font-size:40px}.form-field input{margin-left:auto;border:2px solid #23d5ab;outline:0;box-shadow:inset 0 0 4px #23d5ab;border-radius:6px;padding:10px;font-size:40px;width:110px}.form-field input:focus{border-color:#23a6d5}.btn{text-decoration:none;text-align:center;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:40px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 0.5s infinite;font-family:'Uncle Oscar W05 Regular';width:100%;box-shadow:0 0 2px#fff;border:0}.btn.is-disabled{opacity:.5;cursor:default;pointer-events:none;animation:none}.btn-small{display:none;padding:0;width:76px;height:76px;background:#23d5ab;padding:15px;margin-left:10px}.btn-small svg{fill:#fff}.btn:active{box-shadow:inset 0 0 6px#000}.tickets{max-width:1000px;margin:0 auto;padding:0 30px}.ticket-item{background:#fff;padding:10px;margin-bottom:20px;box-shadow:0 0 4px #000}.player-panel{display:none;padding:80px 50px 0}table{margin:0 auto;font-size:30px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);font-family:'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse:collapse}table td{border:1px #fff solid;width:50px;text-align:center;vertical-align:center}table .is-active{background:rgba(0,0,0,.5);color:#23d5ab;text-decoration:line-through}.player{opacity:0;position:fixed;bottom:-200px}.actions{position:absolute;left:10px;top:10px;width:40px;height:40px;cursor:pointer}.actions.is-refresh{left:unset;right:10px;opacity:.2}.actions.is-muted{opacity:.2}.actions svg{width:100%;height:100%;fill:#fff}.player-panel .form{max-width:610px;margin:unset;padding:0; height: auto}.player-panel .form-field{margin-bottom:20px}.player-panel .form-field input{width:220px;margin-left:0;font-size:20px}.player-panel .form-field .btn{width:180px;margin-left:0;margin-left:30px;font-size:20px}.player-panel .btn{width:300px;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:30px;color:#23a6d5;background:#fff;font-family:'Uncle Oscar W05 Regular';box-shadow:0 0 2px#fff;border:0}.player-panel .btn:active{box-shadow:inset 0 0 6px#000}.player-panel .is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 1s infinite;box-shadow:inset 0 0 6px #000}.generator{display:flex;margin-bottom:20px}.player-actions{display:none;align-items:center;width:50px;padding:5px 20px}.player-actions.is-active{display:flex;cursor:pointer}.player-actions svg{width:50px;height:50px;fill:#fff}.number{text-align:center;width:100%;padding:60px;font-size:120px;color:#fff;background: rgba(255, 255, 255, 0.2);-webkit-backdrop-filter: blur(30px);border-radius:30px;backdrop-filter: blur(30px);border: 2px solid rgba(255, 255, 255, 0.1);box-shadow: 0 0 80px rgb(0 0 0 / 20%);}.replay.is-active{margin-left:auto}.replay.is-active+.number{margin-left:unset}.duration{position:absolute;left:0;right:100px;top:40px;padding:5px 0;text-align:right;font-size:20px;color:#fff}.ticketValidation{display:flex;flex-direction:column;align-items:center;padding-top:50px}.ticketValidation table{max-width:500px;margin:unset;display:none}
+</style>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178763269-1"></script>
 <script>
@@ -9,12 +15,6 @@
   gtag('js', new Date());
   gtag('config', 'UA-178763269-1');
 </script>
-<meta charset="UTF-8">
-<title>Lucky Draw</title>
-<link href="https://fast.fonts.net/cssapi/2c60fe91-a562-4bae-95b2-bf205160a5dd.css" rel="stylesheet" />
-<style>
-@keyframes gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}body,html{min-height:100%}body{font-family:'Uncle Oscar W05 Regular';background:linear-gradient(-45deg,#ee7752,#e73c7e,#23a6d5,#23d5ab);background-size:400% 400%;margin:0;padding:0;animation:gradient 30s infinite}.main{padding-bottom:100px}.ticket-gen-panel{padding-top:100px}.form{display:flex;flex-direction:column;max-width:500px;margin:0 auto 30px;height:calc(100vh - 130px);}.form-field{display:flex;margin-bottom:50px}.form-field .label{font-size:40px}.form-field input{margin-left:auto;border:2px solid #23d5ab;outline:0;box-shadow:inset 0 0 4px #23d5ab;border-radius:6px;padding:10px;font-size:40px;width:110px}.form-field input:focus{border-color:#23a6d5}.btn{text-decoration:none;text-align:center;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:40px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 0.5s infinite;font-family:'Uncle Oscar W05 Regular';width:100%;box-shadow:0 0 2px#fff;border:0}.btn.is-disabled{opacity:.5;cursor:default;pointer-events:none;animation:none}.btn-small{display:none;padding:0;width:76px;height:76px;background:#23d5ab;padding:15px;margin-left:10px}.btn-small svg{fill:#fff}.btn:active{box-shadow:inset 0 0 6px#000}.tickets{max-width:1000px;margin:0 auto;padding:0 30px}.ticket-item{background:#fff;padding:10px;margin-bottom:20px;box-shadow:0 0 4px #000}.player-panel{display:none;padding:80px 50px 0}table{margin:0 auto;font-size:30px;color:#fff;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);font-family:'Uncle Oscar W05 Regular';width:100%;border:1px #fff solid;border-collapse:collapse}table td{border:1px #fff solid;width:50px;text-align:center;vertical-align:center}table .is-active{background:rgba(0,0,0,.5);color:#23d5ab;text-decoration:line-through}.player{opacity:0;position:fixed;bottom:-200px}.actions{position:absolute;left:10px;top:10px;width:40px;height:40px;cursor:pointer}.actions.is-refresh{left:unset;right:10px;opacity:.2}.actions.is-muted{opacity:.2}.actions svg{width:100%;height:100%;fill:#fff}.player-panel .form{max-width:610px;margin:unset;padding:0; height: auto}.player-panel .form-field{margin-bottom:20px}.player-panel .form-field input{width:220px;margin-left:0;font-size:20px}.player-panel .form-field .btn{width:180px;margin-left:0;margin-left:30px;font-size:20px}.player-panel .btn{width:300px;cursor:pointer;padding:10px;outline:0;border-radius:6px;font-size:30px;color:#23a6d5;background:#fff;font-family:'Uncle Oscar W05 Regular';box-shadow:0 0 2px#fff;border:0}.player-panel .btn:active{box-shadow:inset 0 0 6px#000}.player-panel .is-disabled{color:#fff;pointer-events:none;background:linear-gradient(-45deg,#23d5ab,#23a6d5,#e73c7e,#ee7752);background-size:200% 200%;animation:gradient 1s infinite;box-shadow:inset 0 0 6px #000}.generator{display:flex;margin-bottom:20px}.player-actions{display:none;align-items:center;width:50px;padding:5px 20px}.player-actions.is-active{display:flex;cursor:pointer}.player-actions svg{width:50px;height:50px;fill:#fff}.number{text-align:center;width:100%;padding:60px;font-size:120px;color:#fff;background: rgba(255, 255, 255, 0.2);-webkit-backdrop-filter: blur(30px);border-radius:30px;backdrop-filter: blur(30px);border: 2px solid rgba(255, 255, 255, 0.1);box-shadow: 0 0 80px rgb(0 0 0 / 20%);}.replay.is-active{margin-left:auto}.replay.is-active+.number{margin-left:unset}.duration{position:absolute;left:0;right:100px;top:40px;padding:5px 0;text-align:right;font-size:20px;color:#fff}.ticketValidation{display:flex;flex-direction:column;align-items:center;padding-top:50px}.ticketValidation table{max-width:500px;margin:unset;display:none}
-</style>
 </head>
 <body>
     <div class="main">
@@ -33,19 +33,21 @@
     </audio>
     <script>
         let counter = 1;
-        const eIds = [600951,600799,1000034,999786,600202,600872,600510,1000074,600903,999843,600534,600983,600910,600721,600922,600704,600913,1000186,600930,600798,1000095,600734,999678,600722,600905,600487,999996,600595,600339,600440,600863,600844,600715,1000009,600823,600931,600977,600967,999985,600517,600749,1000215,600941,600911,999665,600861,600701,999669,600514,600982,600810,600581,600481,999951,600816,1000090,600876,600958,600699,600521,600914,600803,999802,600666,999644,600928,600916,600508,999831,600893,600919,600868,600463,1000035,600695,600762,600912,600697,999992,600871,600866,600934,600506,600904,999667,600817,999653,600891,600848,600746,600818,600985,999671,600751,999899,1000012,600889,1000022,600698,600786,600991,666945,999741,600728,600992,600965,600906,999664,600685,600940,600864,999640,600880,600165,600279,1000072,600960,600694,600932,600802,600268,600458,600045,600858,1000204,600421,999805,600509,600763,999676,600586,600875,600845,999681,600500,600936,600953,600873,600956,600948,600650,600877,600733,600978,600962,600490,600892,600896,999709,600220,600269,600065,600825,600811,600262,600443,999660,600902,600882,600964,600924,600857,600761,600881,600320,600750,600759,1000238,999651,600859,600921,600674,999740,600843,600464,1000056,600946,1000192,600480,1000179,600702,600849,600671,600201,600665,600938,600925,600716,600842,600974,600952,999892,600752,600929,600459,600652,600723,600708,600257,600720,999986,600474,600597,600984,1000043];
+        const eIds_a = [1000009,1000012,1000022,1000034,1000035,1000043,1000056,1000072,1000074,1000090,1000095,1000179,1000186,1000192,1000204,1000215,1000238];
+        const eIds_b = [600045,600065,600165,600201,600202,600220,600257,600262,600268,600269,600279,600320,600339,600421,600440,600443,600458,600459,600463,600464,600474,600480,600481,600487,600490,600500,600506,600508,600509,600510,600514,600517,600521,600534,600581,600586,600595,600597,600650,600652,600665,600666,600671,600674,600685,600694,600695,600697,600698,600699,600701,600702,600704,600708,600715,600716,600720,600721,600722,600723,600728,600733,600734,600746,600749,600750,600751,600752,600759,600761,600762,600763,600786,600798,600799,600802,600803,600810,600811,600816,600817,600818,600823,600825,600842,600843,600844,600845,600848,600849,600857,600858,600859,600861,600863,600864,600866,600868,600871,600872,600873,600875,600876,600877,600880,600881,600882,600889,600891,600892,600893,600896,600902,600903,600904,600905,600906,600910,600911,600912,600913,600914,600916,600919,600921,600922,600924,600925,600928,600929,600930,600931,600932,600934,600936,600938,600940,600941,600946,600948,600951,600952,600953,600956,600958,600960,600962,600964,600965,600967,600974,600977,600978,600982,600983,600984,600985,600991,600992,666945];
+        const eIds_c = [999640,999644,999651,999653,999660,999664,999665,999667,999669,999671,999676,999678,999681,999709,999740,999741,999786,999802,999805,999831,999843,999892,999899,999951,999985,999986,999992,999996];
+        const allIds = eIds_a.concat(eIds_b, eIds_c);
         const generateRandomButton = document.getElementById("generateRandom");
         const playerbg = document.getElementById("playerbg");
         const numBox = document.getElementById("numbox");
 
-        function generateRandom() {
-            return Math.floor(Math.random() * 205) + 1;
+        function generateRandom(count) {
+            return Math.floor(Math.random() * (count + 1));
         } 
         function animateText() {
-            interval = setInterval(function() {
-                let e = generateRandom();
-                console.log(e);
-                numBox.textContent = eIds[e] || '000000';
+            interval = setInterval(() => {
+                let e = generateRandom(allIds.length);
+                numBox.textContent = allIds[e] || '000000';
             }, 50)
         }
         generateRandomButton.addEventListener("click", function() {
@@ -59,10 +61,31 @@
             playerbg.play();
         })
 
+        function setNumber(ar) {
+            setTimeout(() => {
+                let random = generateRandom(ar.length);
+                if(ar[random]) {
+                    numBox.textContent = ar[random];
+                } else {
+                    numBox.textContent = 'Try Again :P';
+                    counter--;
+                }
+            }, 50);
+        }
+
         playerbg.addEventListener('ended', function () {
-            counter++;
             generateRandomButton.classList.remove('is-disabled');
             clearInterval(interval);
+            if(counter == 1) {
+                setNumber(eIds_a); 
+            }
+            if(counter == 2) {
+                setNumber(eIds_b);
+            }
+            if(counter == 3) {
+                setNumber(eIds_c);
+            }
+            counter++;
         });
 
     </script>
