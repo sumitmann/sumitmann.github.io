@@ -30,7 +30,7 @@
             padding: 0;
             margin: 0;
             overflow-x: hidden;
-            font-family:"Helvetica Now MT Text W01 Rg";
+            font-family: "Helvetica Now MT Text W01 Rg";
         }
 
         .wrapper {
@@ -73,20 +73,20 @@
 
         .list__header h1 {
             background-color: #CA4246;
-            background-image: radial-gradient(#e5498f,#f96459,#ff9000,#f96459,#e5498f);
+            background-image: radial-gradient(#e5498f, #f96459, #ff9000, #f96459, #e5498f);
             background-size: 100%;
             background-repeat: repeat;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-size: 35px;
-            font-family:"Helvetica Now MT Text W01 XBd";
+            font-family: "Helvetica Now MT Text W01 XBd";
         }
 
         .list__header h5 {
             margin-bottom: 0.5rem;
             text-transform: uppercase;
             color: #ffffff;
-            font-family:"Helvetica Now MT Disp W01 XBd";
+            font-family: "Helvetica Now MT Disp W01 XBd";
         }
 
         .list__value {
@@ -123,7 +123,7 @@
             text-align: left;
             background: #000000;
             color: #ffffff;
-            font-family:"Helvetica Now MT Micro W01 Md";
+            font-family: "Helvetica Now MT Micro W01 Md";
             font-size: 10px;
         }
 
@@ -197,7 +197,7 @@
 
         .sidebar__title {
             font-size: 1.2rem;
-            font-family:"Helvetica Now MT Disp W01 Rg";
+            font-family: "Helvetica Now MT Disp W01 Rg";
             color: #fff;
         }
 
@@ -249,10 +249,11 @@
             align-items: center;
             justify-content: center;
             font-family: "Helvetica Now MT Disp W01 Bold";
+            flex-shrink: 0;
         }
 
         .team__rank:after {
-            content: 'Rank';
+            content: attr(data-title);
             position: absolute;
             bottom: -20px;
             font-size: 12px;
@@ -266,7 +267,7 @@
 
         .team__title {
             background-color: #CA4246;
-            background-image: radial-gradient(#e5498f,#f96459,#ff9000,#f96459,#e5498f);
+            background-image: radial-gradient(#e5498f, #f96459, #ff9000, #f96459, #e5498f);
             background-size: 100%;
             background-repeat: repeat;
             -webkit-background-clip: text;
@@ -278,26 +279,197 @@
             text-transform: capitalize;
         }
 
+        .team__title.small{
+            font-size: 20px;
+        }
+
         .team__table {
             width: 100%;
             color: #000;
         }
 
+        .team__table ul {
+            margin: 0;
+        }
+
         .team__table small {
             color: #ADB5BD;
-            font-family:"Helvetica Now MT Micro W01 Md";
+            font-family: "Helvetica Now MT Micro W01 Md";
             font-size: 10px;
         }
 
         .team__table td {
             padding: 0.3rem 0.6rem 0.3rem 0;
             height: 2rem;
-            font-family:"Helvetica Now MT Text W01 Bold";
+            font-family: "Helvetica Now MT Text W01 Bold";
         }
 
         .team__point {
             color: #fa6753;
             font-size: 20px;
+        }
+
+        .tree {
+            display: flex;
+            justify-content: center;
+            background: #fff;
+            padding: 30px 0 50px;
+        }
+
+        .tree * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .tree ul {
+            padding-top: 20px;
+            position: relative;
+            display: flex;
+        }
+
+        .tree ul ul::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 1px solid #17076f;
+            width: 0;
+            height: 20px;
+        }
+
+        .tree li {
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .tree li a {
+            border: 1px solid #17076f;
+            padding: 1em 4em;
+            text-decoration: none;
+            font-size: 0.85em;
+            display: inline-block;
+            transition: all 0.5s;
+            border-radius: 6px;
+            color: #7e0085;
+            cursor: pointer
+        }
+
+        .tree li a:hover {
+            transform: scale(1.1);
+            background: linear-gradient(to bottom, #4e01b1, #5918d6);
+            box-shadow: 0px -7px 14px rgb(93 96 248 / 40%), 0px 7px 14px rgb(151 53 239 / 40%);
+            color: #fff;
+        }
+
+        .tree li::before,
+        .tree li::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 1px solid #17076f;
+            width: 50%;
+            height: 20px;
+        }
+
+        .tree li::after {
+            right: auto;
+            left: 50%;
+            border-left: 1px solid #17076f;
+        }
+
+        .tree li.leftmost::before {
+            border: 0 none;
+        }
+
+        .tree li.leftmost::after {
+            border-radius: 5px 0 0 0;
+        }
+
+        .tree li.rightmost::after {
+            border: 0 none;
+        }
+
+        .tree li.rightmost::before {
+            border-right: 1px solid #17076f;
+            border-radius: 0 5px 0 0;
+        }
+
+        .tree li.root {
+            padding-top: 0;
+        }
+
+        .tree li.root>a {
+            padding: 1rem 2rem;
+            font-weight: bold;
+            font-size: 24px;
+            cursor: default;
+            pointer-events: none;
+            background: linear-gradient(90deg, #17076f, #7e0085, #17076f);
+            color: #fff;
+        }
+
+        .tree li.root::after,
+        .tree li.root::before {
+            content: none;
+        }
+
+        .tree .leaf li {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .tree .leaf li .vs {
+            margin: 0.5rem auto;
+            background: #7e0085;
+            color: #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tree .leaf .leftmost::after {
+            width: 70%;
+            left: 30%;
+        }
+
+        .tree .leaf .rightmost::before {
+            width: 70%;
+            right: 30%;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .btn {
+            margin: 0 10px;
+            border: 1px #fff solid;
+            padding: 0.5em 2em;
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: all 0.5s;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer
+        }
+
+        .btn:hover {
+            border-color: transparent;
+            background: linear-gradient(to bottom, #4e01b1, #5918d6);
+            color: #fff;
+            box-shadow: 0 0 4px 2px rgb(255 255 255 / 40%);
+        }
+
+        .is-hidden {
+            display: none;
         }
 
         @-webkit-keyframes fade {
@@ -330,247 +502,495 @@
             <div class="list__header">
                 <h5>Monotype.</h5>
                 <h1>GAME-O-MANIA</h1>
+                <div class="actions">
+                    <a class="btn" id="schedule">
+                        Schedule
+                    </a>
+                    <a class="btn" id="rules">
+                        Rules
+                    </a>
+                </div>
+                <div class="tree is-hidden" id="schedule_list">
+                    <ul>
+                        <li class="root">
+                            <a>COD - Mobile</a>
+                            <ul>
+                                <li class="leftmost">
+                                    <a class="group" data-group="A" data-available="true"
+                                        data-time="14:30 - 15:00 on 31st May">GROUP A
+                                    </a>
+                                    <ul class="leaf">
+                                        <li class="leftmost">
+                                            <a class="group" data-group="C" data-available="false"
+                                                data-time="14:30 - 15:00 on 1st june">Bottom 7 from group A
+                                                <div class="vs"> VS </div>
+                                                Bottom 7 from group B
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="rightmost">
+                                    <a class="group" data-group="B" data-available="true"
+                                        data-time="14:30 - 15:00 on 2nd June">GROUP B</a>
+                                    <ul class="leaf">
+                                        <li class="rightmost">
+                                            <a class="group" data-group="D" data-available="false"
+                                                data-time="14:30 - 15:00 on 2nd June">Top 6 from group A
+                                                <div class="vs"> VS </div>
+                                                Top 6 from group B
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list__body" id="team_list">
+                    <table class="list__table">
+                        <thead>
+                            <tr>
+                                <th class="list__head">Rank</th>
+                                <th class="list__head">Team</th>
+                                <th class="list__head">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="list__row" data-members="Anchal Soni,Anant Shukl,Sumit Kumar,Jayanta Basu"
+                                data-points="0" data-rank="1" data-team="Fantastic Four" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Fantastic Four</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Deepti Mamgai,Ishan Gupta,Vibhore Gupta,Shashank Kumar"
+                                data-points="0" data-rank="1" data-team="Skull Crusher" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Skull Crusher</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Ishaan Bhatnagar,Vidhi Gupta,Pooja Yadav,Shreyasi Sircar" data-points="0"
+                                data-rank="1" data-team="IPSV" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">IPSV</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Akanksha Rathi,Dheeraj Goel,Ritu Kamboj,Monika Raj"
+                                data-points="0" data-rank="1" data-team="Dhinchak" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Dhinchak</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Prateek Gupta,Ashutosh Kumar Singh,Lakshaya Bakshi,Ishaan Vaid"
+                                data-points="0" data-rank="1" data-team="Litti Chokha" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Litti Chokha</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Padmakshi ,jahnavi sharma,swati krishna,shirin tarachandani"
+                                data-points="0" data-rank="1" data-team="beginers helpline" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">beginers helpline</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Sachi Madan,Prashant Gupta,Vartika Dixit,Rajat Gupta"
+                                data-points="0" data-rank="1" data-team="Font Mafia" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Font Mafia</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Sonakshi Jain,Swati Goyal,Kishor Kumar,Sagar Kumar Sinha" data-points="0"
+                                data-rank="1" data-team="Brave Bravo" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Brave Bravo</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Shwetank,Yogesh,Sahil,Utsab" data-points="0"
+                                data-rank="1" data-team="Goal Diggers" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Goal Diggers</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Sourabh Sharma,Manu Jain,Bhanu Prakash Joshi,Pranav Sharma"
+                                data-points="0" data-rank="1" data-team="GrandTheftGamers" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">GrandTheftGamers</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Jyoti Singh,Nidhi Priya,Sansar Chand Shakya,Shailesh Tyagi"
+                                data-points="0" data-rank="1" data-team="Ghost" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Ghost</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Manish,Atishay,Charu,Gaurav" data-points="0"
+                                data-rank="1" data-team="tamraj kilvish" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">tamraj kilvish</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Anil Kumar Srivastava,Sushil Kumar Jain,Arvind Sharma,Pankaj Bharti"
+                                data-points="0" data-rank="1" data-team="Semicolon" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Semicolon</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Rhythm Goyal,Akshay Bajaj,Aman Aggarwal,Shruti Sharma"
+                                data-points="0" data-rank="1" data-team="Trouble-shoot" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Trouble-shoot</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Ayushi,Shabnam,Mukesh,Raj" data-points="0" data-rank="1"
+                                data-team="MARS" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">MARS</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Nandit Saini,Abhishek Arora,Umakant,Gopesh"
+                                data-points="0" data-rank="1" data-team="Krazy 4" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Krazy 4</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Shivangi Gupta,Apoorv Verma,Lokesh Singla,Saquib Fowad"
+                                data-points="0" data-rank="1" data-team="Garud Dwar" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Garud Dwar</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Anshul,Rajat,Madhu,Vasu" data-points="0" data-rank="1"
+                                data-team="Kamar Tod" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Kamar Tod</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Divyadeep Singh,Vishal Natani,Prince Dhiman,Akshay Vashishtha"
+                                data-points="0" data-rank="1" data-team="pro-noobs" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">pro-noobs</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Umme Habiba,Akash Surendran,Akriti Pandya,Kaushiki Priya Tiwari"
+                                data-points="0" data-rank="1" data-team="The Dopaminers- Up for fun" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">The Dopaminers- Up for fun</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row"
+                                data-members="Deepali Jalpota Kar,Sandeep Sharma,Aditya Mondal,Dhaval Sadaiya"
+                                data-points="0" data-rank="1" data-team="KingSlayer" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">KingSlayer</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Shivani Singh,Manideep,Ankit Gandhi,Ankit Gupta"
+                                data-points="0" data-rank="1" data-team="Killstreak-Kin" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Killstreak-Kin</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Vikas Chawla,Sumit Kumar,Ankit Patel,Rishabh Yadav"
+                                data-points="0" data-rank="1" data-team="Sumit kumar" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">Sumit kumar</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Pritpal,Neha,Richa,Abhijit" data-points="0"
+                                data-rank="1" data-team="missing links" data-group="B">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">missing links</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+                            <tr class="list__row" data-members="Kshitij,Ullash,Heena,Riya" data-points="0" data-rank="1"
+                                data-team="GameOver" data-group="A">
+                                <td class="list__cell">1</td>
+                                <td class="list__cell">GameOver</td>
+
+                                <td class="list__cell">0</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="list__body">
-                <table class="list__table">
-                    <thead>
-                        <tr>
-                            <th class="list__head">Rank</th>
-                            <th class="list__head">Team</th>
-                            <th class="list__head">Points</th>
-                        </tr>
-                    </thead>
-                    <tbody><tr class="list__row" data-members="Anchal Soni,Anant Shukl,Sumit Kumar,Jayanta Basu" data-points="0" data-rank="1" data-team="Fantastic Four">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Fantastic Four</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Deepti Mamgai,Ishan Gupta,Vibhore Gupta,Shashank Kumar" data-points="0" data-rank="1" data-team="Skull Crusher">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Skull Crusher</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Ishaan Bhatnagar,Vidhi Gupta,Pooja Yadav,Shreyasi Sircar" data-points="0" data-rank="1" data-team="IPSV">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">IPSV</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Akanksha Rathi,Dheeraj Goel,Ritu Kamboj,Monika Raj" data-points="0" data-rank="1" data-team="Dhinchak">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Dhinchak</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Prateek Gupta,Ashutosh Kumar Singh,Lakshaya Bakshi,Ishaan Vaid" data-points="0" data-rank="1" data-team="Litti Chokha">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Litti Chokha</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Padmakshi ,jahnavi sharma,swati krishna,shirin tarachandani" data-points="0" data-rank="1" data-team="beginers helpline">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">beginers helpline</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Sachi Madan,Prashant Gupta,Vartika Dixit,Rajat Gupta" data-points="0" data-rank="1" data-team="Font Mafia">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Font Mafia</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Sonakshi Jain,Swati Goyal,Kishor Kumar,Sagar Kumar Sinha" data-points="0" data-rank="1" data-team="Brave Bravo">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Brave Bravo</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Shwetank,Yogesh,Sahil,Utsab" data-points="0" data-rank="1" data-team="Goal Diggers">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Goal Diggers</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Sourabh Sharma,Manu Jain,Bhanu Prakash Joshi,Pranav Sharma" data-points="0" data-rank="1" data-team="GrandTheftGamers">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">GrandTheftGamers</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Jyoti Singh,Nidhi Priya,Sansar Chand Shakya,Shailesh Tyagi" data-points="0" data-rank="1" data-team="Ghost">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Ghost</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Manish,Atishay,Charu,Gaurav" data-points="0" data-rank="1" data-team="tamraj kilvish">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">tamraj kilvish</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Anil Kumar Srivastava,Sushil Kumar Jain,Arvind Sharma,Pankaj Bharti" data-points="0" data-rank="1" data-team="Semicolon">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Semicolon</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Rhythm Goyal,Akshay Bajaj,Aman Aggarwal,Shruti Sharma" data-points="0" data-rank="1" data-team="Trouble-shoot">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Trouble-shoot</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Ayushi,Shabnam,Mukesh,Raj" data-points="0" data-rank="1" data-team="MARS">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">MARS</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Nandit Saini,Abhishek Arora,Umakant,Gopesh" data-points="0" data-rank="1" data-team="Krazy 4">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Krazy 4</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Shivangi Gupta,Apoorv Verma,Lokesh Singla,Saquib Fowad" data-points="0" data-rank="1" data-team="Garud Dwar">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Garud Dwar</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Anshul,Rajat,Madhu,Vasu" data-points="0" data-rank="1" data-team="Kamar Tod">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Kamar Tod</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Divyadeep Singh,Vishal Natani,Prince Dhiman,Akshay Vashishtha" data-points="0" data-rank="1" data-team="pro-noobs">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">pro-noobs</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Umme Habiba,Akash Surendran,Akriti Pandya,Kaushiki Priya Tiwari" data-points="0" data-rank="1" data-team="The Dopaminers- Up for fun">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">The Dopaminers- Up for fun</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Deepali Jalpota Kar,Sandeep Sharma,Aditya Mondal,Dhaval Sadaiya" data-points="0" data-rank="1" data-team="KingSlayer">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">KingSlayer</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Shivani Singh,Manideep,Ankit Gandhi,Ankit Gupta" data-points="0" data-rank="1" data-team="Killstreak-Kin">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Killstreak-Kin</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Vikas Chawla,Sumit Kumar,Ankit Patel,Rishabh Yadav" data-points="0" data-rank="1" data-team="Sumit kumar">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">Sumit kumar</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Pritpal,Neha,Richa,Abhijit" data-points="0" data-rank="1" data-team="missing links">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">missing links</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    <tr class="list__row" data-members="Kshitij,Ullash,Heena,Riya" data-points="0" data-rank="1" data-team="GameOver">
-                        <td class="list__cell">1</td>
-                        <td class="list__cell">GameOver</td>
-                        
-                        <td class="list__cell">0</td>
-                    </tr>
-                    
-                </tbody></table>
+        </div>
+        <div class="overlay"></div>
+        <div class="sidebar">
+            <div class="sidebar__header">
+                <div class="sidebar__title">Team information</div>
+                <button class="button button--close">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="15" y1="9" x2="9" y2="15"></line>
+                        <line x1="9" y1="9" x2="15" y2="15"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="sidebar__body">
+
             </div>
         </div>
-    </div>
-    <div class="overlay"></div>
-    <div class="sidebar">
-        <div class="sidebar__header">
-            <div class="sidebar__title">Team information</div>
-            <button class="button button--close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="15" y1="9" x2="9" y2="15"></line>
-                    <line x1="9" y1="9" x2="15" y2="15"></line>
-                </svg>
-            </button>
-        </div>
-        <div class="sidebar__body">
+        <script>
+            const tableRow = document.querySelectorAll(".list__row");
+            const overlay = document.querySelector(".overlay");
+            const sidebar = document.querySelector(".sidebar");
+            const closeOverlayBtn = document.querySelector(".button--close");
 
-        </div>
-    </div>
-    <script id="rendered-js">
-        const tableRow = document.querySelectorAll(".list__row");
-        const overlay = document.querySelector(".overlay");
-        const sidebar = document.querySelector(".sidebar");
-        const closeOverlayBtn = document.querySelector(".button--close");
+            const ruleButton = document.getElementById("rules");
 
-        const sidebarClose = () => {
-            sidebar.classList.remove("is-open");
-            overlay.style.opacity = 0;
-            setTimeout(() => {
-                overlay.classList.remove("is-open");
-                overlay.style.opacity = 1;
-            }, 300);
-        };
+            const scheduleButton = document.getElementById("schedule");
+            const scheduleList = document.getElementById("schedule_list");
+            const teamsList = document.getElementById("team_list");
 
-        tableRow.forEach(tableRow => {
-            tableRow.addEventListener("click", function () {
+            const gorupLinks = document.querySelectorAll(".group");
+
+            const sidebarClose = () => {
+                sidebar.classList.remove("is-open");
                 overlay.style.opacity = 0;
-                overlay.classList.add("is-open");
-                sidebar.classList.add("is-open");
                 setTimeout(() => {
+                    overlay.classList.remove("is-open");
                     overlay.style.opacity = 1;
-                }, 100);
+                }, 300);
+            };
 
-                // Sidebar content
-                const sidebarBody = document.querySelector(".sidebar__body");
-                sidebarBody.innerHTML = '';
+            scheduleButton.addEventListener("click", function () {
+                if (scheduleButton.classList.contains('is-active')) {
+                    scheduleButton.textContent = 'Schedule';
+                    scheduleButton.classList.remove('is-active');
+                    scheduleList.classList.add('is-hidden');
+                    teamsList.classList.remove('is-hidden');
 
-                let members = this.getAttribute("data-members");
-                members = members.split(',');
-                const teamName = this.getAttribute("data-team");
-                const teamCaptain = members[0];
-                const teamMember1 = members[1];
-                const teamMember2 = members[2];
-                const teamMember3 = members[3];
-                const teamRank = this.getAttribute("data-rank");
-                const teamPoints = this.getAttribute("data-points");
+                } else {
+                    scheduleButton.textContent = 'Teams';
+                    scheduleButton.classList.add('is-active');
+                    scheduleList.classList.remove('is-hidden');
+                    teamsList.classList.add('is-hidden');
+                }
+            });
 
-                const newteam = document.createElement('div');
-                newteam.classList = 'team';
+            ruleButton.addEventListener("click", function () {
+                document.querySelector('.sidebar__title').textContent = 'COD - rules';
+                    overlay.style.opacity = 0;
+                    overlay.classList.add("is-open");
+                    sidebar.classList.add("is-open");
+                    setTimeout(() => {
+                        overlay.style.opacity = 1;
+                    }, 100);
 
-                const teamContent = document.createElement('div');
-                teamContent.classList = 'team__content';
+                    const sidebarBody = document.querySelector(".sidebar__body");
+                    sidebarBody.innerHTML = '';
 
-                const rank = document.createElement('div');
-                rank.classList = 'team__rank';
-                rank.textContent = teamRank;
-                newteam.appendChild(rank);
+                    const newteam = document.createElement('div');
+                    newteam.classList = 'team';
+                    
 
-                const teamTitle = document.createElement('div');
-                teamTitle.classList = 'team__title';
-                teamTitle.innerHTML = teamName;
-                teamContent.appendChild(teamTitle);
+                    const teamContent = document.createElement('div');
+                    teamContent.classList = 'team__content';
 
-                const teamInfo = document.createElement('div');
-                teamInfo.innerHTML = `
+                    const teamTitle = document.createElement('div');
+                    teamTitle.classList = 'team__title small';
+                    teamTitle.innerHTML = 'Points calculation';
+                    teamContent.appendChild(teamTitle);
+                    const teamInfo = document.createElement('div');
+
+                    teamInfo.innerHTML = `
 		<table class="team__table">
 			<tbody>
+                <tr>
+					<td>
+                        <ul>
+                            <li>3 Points - If all 4 team members are playing</li>
+                            <li>3 Points - if you win the match</li>
+                            <li>2 Points - if you finish on 2nd last</li>
+                            <li>1 Point - if you finish on 3rd last</li>
+                            <li>0.5 Points - Each elimination ( e.g. if your eliminates 2 players you'll earn 1 point)</li>
+                        </ul>
+                    </td>
+				</tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="team__title small">Game play rules</div>
+                    </td>
+                </tr>
+                <tr>
+					<td>
+                        <ul>
+                            <li>You can not team up with other player's or team. If we find you teaming up, you'll get -50 points.</li>
+                            <li>All the matches will be multiplayer -> private matches</li>
+                            <li>You need to send us the screen of your rank in match after elimination or match completion. If we don't get screenshot from any team, that team will get -3 points.</li>
+                            <li>To participate in match, you must reach level 5 in game, otherwise you'll not be able to join the match.
+                                <img src="cod-level.png" style="width: 100%;max-width: 100%;display:block">
+                            </li>
+                        </ul>
+                    </td>
+				</tr>
+			</tbody>
+		</table>`;
+                        teamContent.appendChild(teamInfo);
+
+                        newteam.appendChild(teamContent);
+                        sidebarBody.appendChild(newteam);
+            });
+
+            gorupLinks.forEach(gorupLink => {
+                gorupLink.addEventListener("click", function () {
+                    document.querySelector('.sidebar__title').textContent = 'Event Info';
+                    overlay.style.opacity = 0;
+                    overlay.classList.add("is-open");
+                    sidebar.classList.add("is-open");
+                    setTimeout(() => {
+                        overlay.style.opacity = 1;
+                    }, 100);
+
+                    const sidebarBody = document.querySelector(".sidebar__body");
+                    sidebarBody.innerHTML = '';
+
+                    const group = this.getAttribute('data-group');
+                    const time = this.getAttribute('data-time');
+                    const newteam = document.createElement('div');
+                    newteam.classList = 'team';
+
+                    const teamContent = document.createElement('div');
+                    teamContent.classList = 'team__content';
+
+                    const rank = document.createElement('div');
+                    rank.classList = 'team__rank';
+                    rank.textContent = group;
+                    rank.setAttribute('data-title', 'Group');
+                    newteam.appendChild(rank);
+
+                    if (this.getAttribute('data-available') == 'true') {
+                        const teams = document.querySelectorAll(".list__table [data-group='" + group + "']");
+                        let teamNames = '';
+                        teams.forEach(team => {
+                            teamNames = teamNames + team.getAttribute('data-team') + '<br/>';
+                        });
+                        const teamInfo = document.createElement('div');
+                        teamInfo.innerHTML = `
+		<table class="team__table">
+			<tbody>
+                <tr>
+					<td><small>Match time</small></td>
+					<td>${time}</td>
+				</tr>
+                <tr>
+					<td style="vertical-align: top;"><small>Teams</small></td>
+					<td>${teamNames}</td>
+				</tr>
+			</tbody>
+		</table>`;
+                        teamContent.appendChild(teamInfo);
+
+                        newteam.appendChild(teamContent);
+                        sidebarBody.appendChild(newteam);
+                    } else {
+                        const teamInfo = document.createElement('div');
+                        const teamNames = "Teams will be shown after Group A and Group B matches";
+                        teamInfo.innerHTML = `
+		<table class="team__table">
+			<tbody>
+                <tr>
+					<td width="80px"><small>Match time</small></td>
+					<td>${time}</td>
+				</tr>
+                <tr>
+					<td style="vertical-align: top;"><small>Teams</small></td>
+					<td>${teamNames}</td>
+				</tr>
+			</tbody>
+		</table>`;
+                        teamContent.appendChild(teamInfo);
+                        newteam.appendChild(teamContent);
+                        sidebarBody.appendChild(newteam);
+                    }
+                });
+            });
+
+            tableRow.forEach(tableRow => {
+                tableRow.addEventListener("click", function () {
+                    document.querySelector('.sidebar__title').textContent = 'Team information';
+                    overlay.style.opacity = 0;
+                    overlay.classList.add("is-open");
+                    sidebar.classList.add("is-open");
+                    setTimeout(() => {
+                        overlay.style.opacity = 1;
+                    }, 100);
+
+                    // Sidebar content
+                    const sidebarBody = document.querySelector(".sidebar__body");
+                    sidebarBody.innerHTML = '';
+
+                    let members = this.getAttribute("data-members");
+                    members = members.split(',');
+                    const teamName = this.getAttribute("data-team");
+                    const teamGroup = this.getAttribute("data-group");
+                    const teamCaptain = members[0];
+                    const teamMember1 = members[1];
+                    const teamMember2 = members[2];
+                    const teamMember3 = members[3];
+                    const teamRank = this.getAttribute("data-rank");
+                    const teamPoints = this.getAttribute("data-points");
+
+                    const newteam = document.createElement('div');
+                    newteam.classList = 'team';
+
+                    const teamContent = document.createElement('div');
+                    teamContent.classList = 'team__content';
+
+                    const rank = document.createElement('div');
+                    rank.classList = 'team__rank';
+                    rank.textContent = teamRank;
+                    rank.setAttribute('data-title', 'Rank');
+                    newteam.appendChild(rank);
+
+                    const teamTitle = document.createElement('div');
+                    teamTitle.classList = 'team__title';
+                    teamTitle.innerHTML = teamName;
+                    teamContent.appendChild(teamTitle);
+
+                    const teamInfo = document.createElement('div');
+                    teamInfo.innerHTML = `
+		<table class="team__table">
+			<tbody>
+                <tr>
+					<td><small>Group</small></td>
+					<td>${teamGroup}</td>
+				</tr>
 				<tr>
 					<td><small>Member 1 (C)</small></td>
 					<td>${teamCaptain}</td>
@@ -593,22 +1013,22 @@
 				</tr>
 			</tbody>
 		</table>`;
-                teamContent.appendChild(teamInfo);
+                    teamContent.appendChild(teamInfo);
 
-                newteam.appendChild(teamContent);
-                sidebarBody.appendChild(newteam);
+                    newteam.appendChild(teamContent);
+                    sidebarBody.appendChild(newteam);
 
+                });
             });
-        });
 
-        closeOverlayBtn.addEventListener("click", function () {
-            sidebarClose();
-        });
+            closeOverlayBtn.addEventListener("click", function () {
+                sidebarClose();
+            });
 
-        overlay.addEventListener("click", function () {
-            sidebarClose();
-        });
-    </script>
+            overlay.addEventListener("click", function () {
+                sidebarClose();
+            });
+        </script>
 </body>
 
 </html>
