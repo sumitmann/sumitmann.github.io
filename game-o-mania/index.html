@@ -523,51 +523,7 @@
                     </a>
                 </div>
                 <div class="tree is-hidden" id="schedule_list">
-                    <ul>
-                        <li class="root">
-                            <a>COD - Mobile</a>
-                            <ul>
-                                <li class="leftmost">
-                                    <a class="group" data-group="A" data-available="true"
-                                        data-time="13:00 - 13:30 on 31st May">MATCH 1
-                                    </a>
-                                    <ul class="leaf">
-                                        <li class="leftmost">
-                                            <a class="group" data-group="C" data-available="true"
-                                                data-time="13:00 - 13:30 on 3rd June">MATCH 2
-                                            </a>
-                                            <!-- <ul class="leaf">
-                                                <li class="leftmost">
-                                                    <a class="group" data-group="E" data-available="true"
-                                                        data-time="13:00 - 13:30 on 10th June">MATCH 5
-                                                    </a>
-                                                </li>
-                                            </ul> -->
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="rightmost">
-                                    <a class="group" data-group="B" data-available="true"
-                                        data-time="13:00 - 13:30 on 2nd June">MATCH 3</a>
-                                    <ul class="leaf">
-                                        <li class="rightmost">
-                                            <a class="group" data-group="D" data-available="true"
-                                                data-time="13:00 - 13:30 on 4th June">
-                                                MATCH 4
-                                            </a>
-                                            <!-- <ul class="leaf">
-                                                <li class="leftmost">
-                                                    <a class="group" data-group="C" data-available="true"
-                                                        data-time="13:00 - 13:30 on 11th June">MATCH 2
-                                                    </a>
-                                                </li>
-                                            </ul> -->
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div class="team__title">Will be updated soon</div>
                 </div>
                 <div class="list__body" id="team_list">
                     <table class="list__table">
@@ -810,7 +766,7 @@
             });
 
             ruleButton.addEventListener("click", function () {
-                document.querySelector('.sidebar__title').textContent = 'COD - rules';
+                document.querySelector('.sidebar__title').textContent = 'GAME - rules';
                     overlay.style.opacity = 0;
                     overlay.classList.add("is-open");
                     sidebar.classList.add("is-open");
@@ -840,11 +796,15 @@
                 <tr>
 					<td>
                         <ul>
-                            <li>3 Points - If all 4 team members are playing</li>
-                            <li>3 Points - if you win the match</li>
-                            <li>2 Points - if you finish on 2nd last</li>
-                            <li>1 Point - if you finish on 3rd last</li>
-                            <li>0.5 Points - Each elimination ( e.g. if your team eliminates 2 players you'll earn 1 point)</li>
+                            <li>1 Point - If both members complete their respective match</li>
+                            <li>5 Points - if you checkmate</li>
+                            <li>3 Point - if you win without checkmate</li>
+                            <li>2 Points - if you checkmate under 8 moves.</li>
+                            <li>1.5 Points - if match is a draw</li>
+                            <li>1 point - if you take opponent's queen</li>
+                            <li>0.5 point - if you take any pair (Bishop, Knight, Rook) E.g. if you take all you'll earn 1.5points.</li>
+                            <li>1 point - if you take exactly one of each (Bishop, Knight, Rook)</li>
+                            <li>1 point - if you promote any pawn</li><li>1 point - if you take all the pawns</li>
                         </ul>
                     </td>
 				</tr>
@@ -856,12 +816,9 @@
                 <tr>
 					<td>
                         <ul>
-                            <li>You can not team up with other player's or team. If we find you teaming up, you'll get <b>-50 points</b>.</li>
-                            <li>All the matches will be Battle Royale -> private matches</li>
-                            <li>You need to send us the <b>screenshot</b> of your rank in match after elimination or match completion. If we don't get screenshot from any team, that team will get <b>-3 points</b>.</li>
-                            <li>To participate in match, you must reach level 7 in game, otherwise you'll not be able to join the match.
-                                <img src="cod-level.png" style="width: 100%;max-width: 100%;display:block">
-                            </li>
+                            <li>Players need to share their chess.com username before match.</li>
+                            <li>Players need to connect on provided zoom link for each match with mic and video on</li>
+                            <li>There will be no reschedule/rematch if any player is unable to join or drop in between the match. Opponent player will be declared winner.</li>
                         </ul>
                     </td>
 				</tr>
