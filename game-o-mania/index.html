@@ -279,7 +279,7 @@
             text-transform: capitalize;
         }
 
-        .team__title.small{
+        .team__title.small {
             font-size: 20px;
         }
 
@@ -292,7 +292,7 @@
             margin: 0;
         }
 
-        .team__table ul b{
+        .team__table ul b {
             font-family: "Helvetica Now MT Disp W01 Bold";
             color: #ff9000;
         }
@@ -314,138 +314,101 @@
             font-size: 20px;
         }
 
-        .tree {
-            display: flex;
-            justify-content: center;
+        .event-map {
             background: #fff;
-            padding: 30px 0 50px;
-        }
-
-        .tree * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .tree ul {
-            padding-top: 20px;
-            position: relative;
+            padding: 50px;
             display: flex;
         }
 
-        .tree ul ul::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            border-left: 1px solid #17076f;
-            width: 0;
-            height: 20px;
-        }
-
-        .tree li {
-            text-align: center;
-            list-style-type: none;
-            position: relative;
-            padding-top: 20px;
-        }
-
-        .tree li a {
-            border: 1px solid #17076f;
-            padding: 1em 4em;
-            text-decoration: none;
-            font-size: 0.85em;
-            display: inline-block;
-            transition: all 0.5s;
-            border-radius: 6px;
-            color: #7e0085;
-            cursor: pointer
-        }
-
-        .tree li a:hover {
-            transform: scale(1.1);
-            background: linear-gradient(to bottom, #4e01b1, #5918d6);
-            box-shadow: 0px -7px 14px rgb(93 96 248 / 40%), 0px 7px 14px rgb(151 53 239 / 40%);
-            color: #fff;
-        }
-
-        .tree li::before,
-        .tree li::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 50%;
-            border-top: 1px solid #17076f;
-            width: 50%;
-            height: 20px;
-        }
-
-        .tree li::after {
-            right: auto;
-            left: 50%;
-            border-left: 1px solid #17076f;
-        }
-
-        .tree li.leftmost::before {
-            border: 0 none;
-        }
-
-        .tree li.leftmost::after {
-            border-radius: 5px 0 0 0;
-        }
-
-        .tree li.rightmost::after {
-            border: 0 none;
-        }
-
-        .tree li.rightmost::before {
-            border-right: 1px solid #17076f;
-            border-radius: 0 5px 0 0;
-        }
-
-        .tree li.root {
-            padding-top: 0;
-        }
-
-        .tree li.root>a {
-            padding: 1rem 2rem;
-            font-weight: bold;
-            font-size: 24px;
-            cursor: default;
-            pointer-events: none;
-            background: linear-gradient(90deg, #17076f, #7e0085, #17076f);
-            color: #fff;
-        }
-
-        .tree li.root::after,
-        .tree li.root::before {
-            content: none;
-        }
-
-        .tree .leaf li {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .tree .leaf li .vs {
-            margin: 0.5rem auto;
-            background: #7e0085;
-            color: #fff;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
+        .event-list {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            width: 200px;
+            position: relative;
+        }
+
+        .event-match {
+            display: flex;
+            flex-direction: column;
             justify-content: center;
+            margin-bottom: 20px;
+            background: #fff;
+            position: relative;
+            margin-right: 50px;
+            min-height: 88.4px;
         }
 
-        .tree .leaf .leftmost::after {
-            width: 70%;
-            left: 30%;
+        .event-match::after {
+            content: '';
+            position: absolute;
+            left: calc(100% + 21px);
+            top: 50%;
+            width: 50px;
+            border-top: 2px solid #fa6753;
         }
 
-        .tree .leaf .rightmost::before {
-            width: 70%;
-            right: 30%;
+        .event-match div {
+            padding: 10px;
+            text-decoration: none;
+            background: linear-gradient(to bottom, #4e01b1, #5918d6);
+            color: #fff;
+            font-size: 13px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* .event-match::before {
+            content: "";
+            position: absolute;
+            top: calc(50% + 1px);
+            left: calc(100% + 69px);
+            border-left: 2px solid #fa6753;
+            width: 20px;
+            height: calc(50% + 10px);
+        }
+
+
+        .event-match:nth-child(even)::before {
+            top: unset;
+            bottom: 44px;
+            border-top: 2px solid #fa6753;
+        }
+
+        .is-blank .event-match {
+            margin-bottom: 0;
+            height: 100%;
+        } */
+
+        .event-match div:first-child:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .event-match div::before {
+            content: "";
+            position: absolute;
+            top: calc(50% + 1px);
+            left: calc(100% + 19px);
+            border-right: 2px solid #fa6753;
+            width: 1px;
+            height: calc(50% + 5px);
+        }
+
+        .event-match div::after {
+            content: "";
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            width: 21px;
+            border-top: 2px solid #fa6753;
+        }
+
+        .event-match div:nth-child(2)::before {
+            top: unset;
+            bottom: calc(50% - 1px);
+        }
+
+        .is-blank .event-match div::before {
+            content: none;
         }
 
         .actions {
@@ -499,13 +462,13 @@
             }
         }
     </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-178763269-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-178763269-1');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-178763269-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-178763269-1');
+    </script>
 </head>
 
 <body translate="no">
@@ -523,7 +486,145 @@
                     </a>
                 </div>
                 <div class="tree is-hidden" id="schedule_list">
-                    <div class="team__title">Will be updated soon</div>
+                    <div class="event-map">
+                        <div class="event-list">
+                            <div class="event-match">
+                                <div>Ashutosh</div>
+                                <div>Kshitij</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Dheeraj Goel</div>
+                                <div>Mukesh</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Divyadeep</div>
+                                <div>Anil Srivastava</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Dhaval Sadaiya</div>
+                                <div>Jyoti</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Vidhi</div>
+                                <div>Vibhore</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Atishay</div>
+                                <div>sumit kumar</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Sourabh Sharma</div>
+                                <div>Manideep Nelapati</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Udita</div>
+                                <div>Apoorv</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Vasu</div>
+                                <div>Nandit</div>
+                            </div>
+                            <div class="event-match">
+                                <div>yogesh</div>
+                                <div>Aman</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Prateek</div>
+                                <div>Heena</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Akanksha Rathi</div>
+                                <div>Ayushi</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Akshay</div>
+                                <div>Sushil Jain</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Aditya Mondal</div>
+                                <div>Shailesh</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Pooja</div>
+                                <div>Anant Shuka</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Ravinder</div>
+                                <div>Ankit Gupta</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Bhanu</div>
+                                <div>Saquib</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Anshul</div>
+                                <div>Abhishek</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Manish</div>
+                                <div>Sahil</div>
+                            </div>
+                        </div>
+                        <!-- <div class="event-list is-blank">
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
+                            </div>
+                        </div> -->
+                    </div>
                 </div>
                 <div class="list__body" id="team_list">
                     <table class="list__table">
@@ -560,11 +661,12 @@
                                 data-points="11.5" data-rank="4" data-team="KingSlayer" data-group="A,D">
                                 <td class="list__cell">4</td>
                                 <td class="list__cell">KingSlayer</td>
-                                <td class="list__cell">11.5</tr>
+                                <td class="list__cell">11.5
+                            </tr>
                             </tr>
                             <tr class="list__row"
-                                data-members="Ishaan Bhatnagar,Vidhi Gupta,Pooja Yadav,Shreyasi Sircar" data-points="10.5"
-                                data-rank="5" data-team="VIPs" data-group="A,D">
+                                data-members="Ishaan Bhatnagar,Vidhi Gupta,Pooja Yadav,Shreyasi Sircar"
+                                data-points="10.5" data-rank="5" data-team="VIPs" data-group="A,D">
                                 <td class="list__cell">5</td>
                                 <td class="list__cell">VIPs</td>
                                 <td class="list__cell">10.5</td>
@@ -583,8 +685,8 @@
 
                                 <td class="list__cell">8.5</td>
                             </tr>
-                            <tr class="list__row" data-members="Anuj Goria,Kirti Goel,Udita Dhingra,Ritika Aggarwal" data-points="8.5" data-rank="6"
-                            data-team="Avengers" data-group="B,D">
+                            <tr class="list__row" data-members="Anuj Goria,Kirti Goel,Udita Dhingra,Ritika Aggarwal"
+                                data-points="8.5" data-rank="6" data-team="Avengers" data-group="B,D">
                                 <td class="list__cell">6</td>
                                 <td class="list__cell">Avengers</td>
                                 <td class="list__cell">8.5</td>
@@ -673,8 +775,8 @@
                                 <td class="list__cell">Semicolon</td>
                                 <td class="list__cell">0</td>
                             </tr>
-                            <tr class="list__row" data-members="Ayushi,Shabnam,Mukesh,Raj" data-points="0" data-rank="13"
-                                data-team="MARS" data-group="A,C">
+                            <tr class="list__row" data-members="Ayushi,Shabnam,Mukesh,Raj" data-points="0"
+                                data-rank="13" data-team="MARS" data-group="A,C">
                                 <td class="list__cell">13</td>
                                 <td class="list__cell">MARS</td>
                                 <td class="list__cell">0</td>
@@ -698,8 +800,8 @@
                                 <td class="list__cell">missing links</td>
                                 <td class="list__cell">0</td>
                             </tr>
-                            <tr class="list__row" data-members="Kshitij,Ullash,Heena,Riya" data-points="0" data-rank="13"
-                                data-team="GameOver" data-group="A,C">
+                            <tr class="list__row" data-members="Kshitij,Ullash,Heena,Riya" data-points="0"
+                                data-rank="13" data-team="GameOver" data-group="A,C">
                                 <td class="list__cell">13</td>
                                 <td class="list__cell">GameOver</td>
                                 <td class="list__cell">0</td>
@@ -767,30 +869,30 @@
 
             ruleButton.addEventListener("click", function () {
                 document.querySelector('.sidebar__title').textContent = 'GAME - rules';
-                    overlay.style.opacity = 0;
-                    overlay.classList.add("is-open");
-                    sidebar.classList.add("is-open");
-                    setTimeout(() => {
-                        overlay.style.opacity = 1;
-                    }, 100);
+                overlay.style.opacity = 0;
+                overlay.classList.add("is-open");
+                sidebar.classList.add("is-open");
+                setTimeout(() => {
+                    overlay.style.opacity = 1;
+                }, 100);
 
-                    const sidebarBody = document.querySelector(".sidebar__body");
-                    sidebarBody.innerHTML = '';
+                const sidebarBody = document.querySelector(".sidebar__body");
+                sidebarBody.innerHTML = '';
 
-                    const newteam = document.createElement('div');
-                    newteam.classList = 'team';
-                    
+                const newteam = document.createElement('div');
+                newteam.classList = 'team';
 
-                    const teamContent = document.createElement('div');
-                    teamContent.classList = 'team__content';
 
-                    const teamTitle = document.createElement('div');
-                    teamTitle.classList = 'team__title small';
-                    teamTitle.innerHTML = 'Points calculation';
-                    teamContent.appendChild(teamTitle);
-                    const teamInfo = document.createElement('div');
+                const teamContent = document.createElement('div');
+                teamContent.classList = 'team__content';
 
-                    teamInfo.innerHTML = `
+                const teamTitle = document.createElement('div');
+                teamTitle.classList = 'team__title small';
+                teamTitle.innerHTML = 'Points calculation';
+                teamContent.appendChild(teamTitle);
+                const teamInfo = document.createElement('div');
+
+                teamInfo.innerHTML = `
 		<table class="team__table">
 			<tbody>
                 <tr>
@@ -798,7 +900,7 @@
                         <ul>
                             <li>1 Point - If both members complete their respective match</li>
                             <li>5 Points - if you checkmate</li>
-                            <li>3 Points - if you win without checkmate</li>
+                            <li>3 Point - if you win without checkmate</li>
                             <li>2 Points - if you checkmate under 8 moves.</li>
                             <li>1.5 Points - if match is a draw</li>
                             <li>1 point - if you take opponent's queen</li>
@@ -824,10 +926,10 @@
 				</tr>
 			</tbody>
 		</table>`;
-                        teamContent.appendChild(teamInfo);
+                teamContent.appendChild(teamInfo);
 
-                        newteam.appendChild(teamContent);
-                        sidebarBody.appendChild(newteam);
+                newteam.appendChild(teamContent);
+                sidebarBody.appendChild(newteam);
             });
 
             gorupLinks.forEach(gorupLink => {
@@ -858,13 +960,13 @@
                     newteam.appendChild(rank);
 
                     // if (this.getAttribute('data-available') == 'true') {
-                        const teams = document.querySelectorAll(".list__table [data-group*='" + group + "']");
-                        let teamNames = '';
-                        teams.forEach(team => {
-                            teamNames = teamNames + team.getAttribute('data-team') + '<br/>';
-                        });
-                        const teamInfo = document.createElement('div');
-                        teamInfo.innerHTML = `
+                    const teams = document.querySelectorAll(".list__table [data-group*='" + group + "']");
+                    let teamNames = '';
+                    teams.forEach(team => {
+                        teamNames = teamNames + team.getAttribute('data-team') + '<br/>';
+                    });
+                    const teamInfo = document.createElement('div');
+                    teamInfo.innerHTML = `
 		<table class="team__table">
 			<tbody>
                 <tr>
@@ -877,29 +979,29 @@
 				</tr>
 			</tbody>
 		</table>`;
-                        teamContent.appendChild(teamInfo);
+                    teamContent.appendChild(teamInfo);
 
-                        newteam.appendChild(teamContent);
-                        sidebarBody.appendChild(newteam);
-        //             } else {
-        //                 const teamInfo = document.createElement('div');
-        //                 const teamNames = "Teams will be shown after Group A and Group B matches";
-        //                 teamInfo.innerHTML = `
-		// <table class="team__table">
-		// 	<tbody>
-        //         <tr>
-		// 			<td width="80px"><small>Match time</small></td>
-		// 			<td>${time}</td>
-		// 		</tr>
-        //         <tr>
-		// 			<td style="vertical-align: top;"><small>Teams</small></td>
-		// 			<td>${teamNames}</td>
-		// 		</tr>
-		// 	</tbody>
-		// </table>`;
-        //                 teamContent.appendChild(teamInfo);
-        //                 newteam.appendChild(teamContent);
-        //                 sidebarBody.appendChild(newteam);
+                    newteam.appendChild(teamContent);
+                    sidebarBody.appendChild(newteam);
+                    //             } else {
+                    //                 const teamInfo = document.createElement('div');
+                    //                 const teamNames = "Teams will be shown after Group A and Group B matches";
+                    //                 teamInfo.innerHTML = `
+                    // <table class="team__table">
+                    // 	<tbody>
+                    //         <tr>
+                    // 			<td width="80px"><small>Match time</small></td>
+                    // 			<td>${time}</td>
+                    // 		</tr>
+                    //         <tr>
+                    // 			<td style="vertical-align: top;"><small>Teams</small></td>
+                    // 			<td>${teamNames}</td>
+                    // 		</tr>
+                    // 	</tbody>
+                    // </table>`;
+                    //                 teamContent.appendChild(teamInfo);
+                    //                 newteam.appendChild(teamContent);
+                    //                 sidebarBody.appendChild(newteam);
                     // }
                 });
             });
