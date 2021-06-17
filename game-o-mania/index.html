@@ -323,8 +323,9 @@
         .event-list {
             display: flex;
             flex-direction: column;
-            width: 200px;
+            width: 210px;
             position: relative;
+            justify-content: flex-start;
         }
 
         .event-match {
@@ -336,6 +337,30 @@
             position: relative;
             margin-right: 50px;
             min-height: 88.4px;
+        }
+
+        .event-match a {
+            transform: scale(0);
+            opacity: 0;
+            text-decoration: none;
+            position: absolute;
+            background-color: #CA4246;
+            background-image: radial-gradient(#e5498f, #f96459, #ff9000, #f96459, #e5498f);
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: transform 0.3s ease;
+            font-size: 13px;
+        }
+
+        .event-match:hover a {
+            transform: scale(1);
+            opacity: 1;
         }
 
         .event-match::after {
@@ -356,28 +381,6 @@
             text-align: center;
             position: relative;
         }
-
-        /* .event-match::before {
-            content: "";
-            position: absolute;
-            top: calc(50% + 1px);
-            left: calc(100% + 69px);
-            border-left: 2px solid #fa6753;
-            width: 20px;
-            height: calc(50% + 10px);
-        }
-
-
-        .event-match:nth-child(even)::before {
-            top: unset;
-            bottom: 44px;
-            border-top: 2px solid #fa6753;
-        }
-
-        .is-blank .event-match {
-            margin-bottom: 0;
-            height: 100%;
-        } */
 
         .event-match div:first-child:not(:last-child) {
             margin-bottom: 10px;
@@ -407,8 +410,33 @@
             bottom: calc(50% - 1px);
         }
 
-        .is-blank .event-match div::before {
-            content: none;
+        .round-two .event-match {
+            margin-bottom: 1px;
+            height: 216px;
+            justify-content: space-around;
+        }
+
+        .round-two .last {
+            height: auto;
+            justify-content: flex-start;
+            padding: 20px 0;
+        }
+
+
+        .round-two .event-match div {
+            margin-bottom: 16px;
+        }
+
+        .round-two .event-match div::before {
+            height: calc(120% + 6px);
+        }
+
+        .round-two .last div::before {
+            height: calc(120% + 2px);
+        }
+
+        .round-two .event-match::after {
+            top: calc(50% - 8px);
         }
 
         .actions {
@@ -489,141 +517,143 @@
                     <div class="event-map">
                         <div class="event-list">
                             <div class="event-match">
-                                <div>Ashutosh</div>
-                                <div>Kshitij</div>
+                                <div>Ashutosh: 5</div>
+                                <div>Kshitij: 0</div>
+                                <a href="https://www.chess.com/game/live/17481162057" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
-                                <div>Dheeraj Goel</div>
-                                <div>Mukesh</div>
+                                <div>Dheeraj Goel: 3</div>
+                                <div>Mukesh: 0</div>
+                                <a href="javascript:void(0);">Mukesh - no show</a>
                             </div>
                             <div class="event-match">
-                                <div>Divyadeep</div>
-                                <div>Anil Srivastava</div>
+                                <div>Divyadeep: 4.5</div>
+                                <div>Anil Srivastava: 0.5</div>
+                                <a href="https://www.chess.com/game/live/17482324149" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
-                                <div>Dhaval Sadaiya</div>
-                                <div>Jyoti</div>
+                                <div>Dhaval Sadaiya: 5</div>
+                                <div>Jyoti: 0.5</div>
+                                <a href="https://www.chess.com/game/live/17482324149" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
-                                <div>Vidhi</div>
-                                <div>Vibhore</div>
+                                <div>Vidhi: 3</div>
+                                <div>Vibhore: 0</div>
+                                <a href="javascript:void(0);">Vibhore - no show</a>
                             </div>
                             <div class="event-match">
-                                <div>Atishay</div>
-                                <div>sumit kumar</div>
+                                <div>Atishay: 3.5</div>
+                                <div>sumit kumar: 0.5</div>
+                                <a href="https://www.chess.com/game/live/17482930567" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
-                                <div>Sourabh Sharma</div>
-                                <div>Manideep Nelapati</div>
+                                <div>Sourabh Sharma: 0.5</div>
+                                <div>Manideep: 3.5</div>
+                                <a href="https://www.chess.com/game/live/17497381047" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
                                 <div>Udita</div>
                                 <div>Apoorv</div>
+                                <a href="javascript:void(0);">Udita - no show</a>
                             </div>
                             <div class="event-match">
-                                <div>Vasu</div>
-                                <div>Nandit</div>
+                                <div>Vasu: 7</div>
+                                <div>Nandit: 0</div>
+                                <a href="https://www.chess.com/game/live/17567574431" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
-                                <div>yogesh</div>
-                                <div>Aman</div>
+                                <div>yogesh: 3</div>
+                                <div>Aman: 0</div>
+                                <a href="javascript:void(0);">Aman - no show</a>
                             </div>
                             <div class="event-match">
-                                <div>Prateek</div>
-                                <div>Heena</div>
+                                <div>Prateek: 5</div>
+                                <div>Heena: 0</div>
+                                <a href="https://www.chess.com/live#g=17568201823" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
-                                <div>Akanksha Rathi</div>
-                                <div>Ayushi</div>
+                                <div>Akanksha Rathi: 0</div>
+                                <div>Ayushi: 7.5</div>
+                                <a href="https://www.chess.com/live#g=17573518737" target="_blank">Click to see<br/>Game Report</a>
                             </div>
                             <div class="event-match">
                                 <div>Akshay</div>
                                 <div>Sushil Jain</div>
+                                <a href="javascript:void(0);">pending</a>
                             </div>
                             <div class="event-match">
-                                <div>Aditya Mondal</div>
+                                <div>Aditya Mondal: 1.5</div>
+                                <div>Shailesh: 4</div>
+                                <a href="https://www.chess.com/game/live/17568758239" target="_blank">Click to see<br/>Game Report</a>
+                            </div>
+                            <div class="event-match">
+                                <div>Pooja: 4</div>
+                                <div>Anant Shuka: 1</div>
+                                <a href="https://www.chess.com/game/live/17569870363" target="_blank">Click to see<br/>Game Report</a>
+                            </div>
+                            <div class="event-match">
+                                <div>Ravinder: 3</div>
+                                <div>Ankit Gupta: 0</div>
+                                <a href="javascript:void(0);">Ankit - no show</a>
+                            </div>
+                            <div class="event-match">
+                                <div>Bhanu: 1</div>
+                                <div>Saquib: 4.5</div>
+                                <a href="https://www.chess.com/game/live/17653938023" target="_blank">Click to see<br/>Game Report</a>
+                            </div>
+                            <div class="event-match">
+                                <div>Anshul: 1</div>
+                                <div>Abhishek: 3.5</div>
+                                <a href="https://www.chess.com/game/live/17569884229" target="_blank">Click to see<br/>Game Report</a>
+                            </div>
+                            <div class="event-match">
+                                <div>Manish: 3</div>
+                                <div>Sahil: 1</div>
+                                <a href="https://www.chess.com/game/live/17570462021" target="_blank">Click to see<br/>Game Report</a>
+                            </div>
+                        </div>
+                        <div class="event-list round-two">
+                            <div class="event-match">
+                                <div>Ashutosh</div>
+                                <div>Dheeraj Goel</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Divyadeep</div>
+                                <div>Dhaval</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Vidhi</div>
+                                <div>Atishay</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Manideep</div>
+                                <div>Apoorv</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Vasu</div>
+                                <div>Yogesh</div>
+                            </div>
+                            <div class="event-match">
+                                <div>Prateek</div>
+                                <div>Ayushi</div>
+                            </div>
+                            <div class="event-match">
+                                <div>-</div>
                                 <div>Shailesh</div>
                             </div>
                             <div class="event-match">
                                 <div>Pooja</div>
-                                <div>Anant Shuka</div>
-                            </div>
-                            <div class="event-match">
                                 <div>Ravinder</div>
-                                <div>Ankit Gupta</div>
                             </div>
                             <div class="event-match">
-                                <div>Bhanu</div>
                                 <div>Saquib</div>
-                            </div>
-                            <div class="event-match">
-                                <div>Anshul</div>
                                 <div>Abhishek</div>
                             </div>
-                            <div class="event-match">
+                            <div class="event-match last">
                                 <div>Manish</div>
-                                <div>Sahil</div>
+                                <div>Shreel</div>
                             </div>
                         </div>
-                        <!-- <div class="event-list is-blank">
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                            <div class="event-match">
-                                <div>-</div>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
                 <div class="list__body" id="team_list">
