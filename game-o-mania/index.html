@@ -500,7 +500,40 @@
         }
 
         .four .last::after {
-            top: calc(81% - 8px);
+            content: none;
+        }
+
+        .four .event-match a {
+            top: 191px;
+            bottom: 207px;
+        }
+
+        .four .last a {
+            top: 169px;
+            bottom: 16px;
+        }
+
+        .final .event-match {
+            height: 1739px;
+            margin-bottom: 0;
+        }
+
+        .final .event-match div::before {
+            height: calc(1090% + 6px);
+        }
+
+        .final .event-match a {
+            top: 408px;
+            bottom: 424px;
+        }
+
+        .winner .event-match {
+            height: 100%;
+            padding-bottom: 360px;
+        }
+
+        .winner .event-match div::before, .winner .event-match div::after, .winner .event-match:after {
+           content: none
         }
 
         .actions {
@@ -784,16 +817,31 @@
                         </div>
                         <div class="event-list round-two four">
                             <div class="event-match">
-                                <div>Dhaval</div>
-                                <div>Manideep</div>
+                                <div>Dhaval: 3</div>
+                                <div>Manideep: 0</div>
+                                <a href="javascript:void(0);">Manideep: no show</a>
                             </div>
                             <div class="event-match">
-                                <div>Yogesh</div>
-                                <div>Pooja</div>
+                                <div>Yogesh: 1</div>
+                                <div>Pooja: 6</div>
+                                <a href="https://www.chess.com/game/live/18263422251" target="_blank">Click to see<br />Game Report</a>
                             </div>
                             <div class="event-match last">
-                                <div>Saquib</div>
+                                <div>Saquib: 0</div>
                                 <div>Shreel (EMG)</div>
+                                <a href="javascript:void(0);">Saquib: no show</a>
+                            </div>
+                        </div>
+                        <div class="event-list round-two final">
+                            <div class="event-match">
+                                <div>Dhaval</div>
+                                <div>Pooja</div>
+                                <a href="javascript:void(0);" target="_blank">Pending</a>
+                            </div>
+                        </div>
+                        <div class="event-list round-two winner">
+                            <div class="event-match">
+                                <div>winner</div>
                             </div>
                         </div>
                     </div>
@@ -817,17 +865,17 @@
                             </tr>
                             <tr class="list__row"
                                 data-members="Ishaan Bhatnagar,Vidhi Gupta,Pooja Yadav,Shreyasi Sircar"
-                                data-points="38" data-rank="2" data-team="VIPs" data-group="-">
+                                data-points="44" data-rank="2" data-team="VIPs" data-group="-">
                                 <td class="list__cell">2</td>
                                 <td class="list__cell">VIPs</td>
-                                <td class="list__cell">38</td>
+                                <td class="list__cell">44</td>
                             </tr>
                             <tr class="list__row"
                                 data-members="Deepali Jalpota Kar,Sandeep Sharma,Aditya Mondal,Dhaval Sadaiya"
-                                data-points="32" data-rank="3" data-team="KingSlayer" data-group="-">
+                                data-points="35" data-rank="3" data-team="KingSlayer" data-group="-">
                                 <td class="list__cell">3</td>
                                 <td class="list__cell">KingSlayer</td>
-                                <td class="list__cell">32</td>
+                                <td class="list__cell">35</td>
                             </tr>
                             <tr class="list__row" data-members="Manish,Atishay,Charu,Gaurav" data-points="22.5"
                                 data-rank="4" data-team="tamraj kilvish" data-group="-">
@@ -835,16 +883,16 @@
                                 <td class="list__cell">tamraj kilvish</td>
                                 <td class="list__cell">22.5</td>
                             </tr>
-                            <tr class="list__row" data-members="Shivangi Gupta,Apoorv Verma,Lokesh Singla,Saquib Fowad"
-                                data-points="21.5" data-rank="4" data-team="Garud Dwar" data-group="-">
-                                <td class="list__cell">4</td>
-                                <td class="list__cell">Garud Dwar</td>
-                                <td class="list__cell">21.5</td>
-                            </tr>
-                            <tr class="list__row" data-members="Shwetank,Yogesh,Sahil,Utsab" data-points="21.5"
+                            <tr class="list__row" data-members="Shwetank,Yogesh,Sahil,Utsab" data-points="22.5"
                                 data-rank="4" data-team="Goal Diggers" data-group="-">
                                 <td class="list__cell">4</td>
                                 <td class="list__cell">Goal Diggers</td>
+                                <td class="list__cell">22.5</td>
+                            </tr>
+                            <tr class="list__row" data-members="Shivangi Gupta,Apoorv Verma,Lokesh Singla,Saquib Fowad"
+                                data-points="21.5" data-rank="5" data-team="Garud Dwar" data-group="-">
+                                <td class="list__cell">5</td>
+                                <td class="list__cell">Garud Dwar</td>
                                 <td class="list__cell">21.5</td>
                             </tr>
                             <tr class="list__row" data-members="Akanksha Rathi,Dheeraj Goel,Ritu Kamboj,Monika Raj"
