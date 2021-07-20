@@ -23,7 +23,7 @@
 <body translate="no">
 <div class=container><h1 style='font-variation-settings:"wght" 340.501,"wdth" 199.593'><span data-letter=S>S</span><span data-letter=U>U</span><span data-letter=M>M</span><span data-letter=I>I</span><span data-letter=T>T</span><br><span data-letter=M>M</span><span data-letter=A>A</span><span data-letter=N>N</span><span data-letter=N>N</span></h1></div>
 <script>
-document.addEventListener("mousemove",function(e){var t=document.querySelector(".container"),n=t.clientWidth,i=t.clientHeight;769<=n&&(t.querySelector("h1").style["font-variation-settings"]="'wght' "+(200+e.pageY/i*100*5)+", 'wdth' "+e.pageX/n*100*2)});
+function changeVariableProps(){var t=document.querySelector(".container"),n=t.clientWidth,a=t.clientHeight;769<=n&&(t.querySelector("h1").style["font-variation-settings"]="'wght' "+(200+e.pageY/a*100*5)+", 'wdth' "+e.pageX/n*100*2)}document.addEventListener("mousemove",changeVariableProps,!1),document.addEventListener("touchmove",changeVariableProps,!1);
 </script>
 </body>
 </html>
