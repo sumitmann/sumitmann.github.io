@@ -1,5 +1,4 @@
 'use strict';
-var startClock = document.querySelector('.stat-timer-cta');
 var S = {
   init: function () {
     var timeText = 'Starting Clock';
@@ -30,13 +29,7 @@ var S = {
       timeText = days+"d : " + hours + "h"; 
       secondText = minutes+"m : " +seconds+'s';
     }
-    startClock.addEventListener('click', function(){
-      document.querySelector('.canvas').classList.remove('hidden');
-      document.querySelector('.ui').classList.remove('hidden');
-      this.remove();
-      setTimeout(function(){
       checktime();
-      S.UI.simulate(timeText);
       var x = setInterval(function() { 
         checktime();
         var mainInput = document.querySelector('.ui-input');
@@ -53,8 +46,6 @@ var S = {
                 mainInput.value= '00 : 00 : 00';
             } 
         }, 1000);
-      }, 3000);
-    });
     var action = window.location.href,
         i = action.indexOf('?a=');
 
