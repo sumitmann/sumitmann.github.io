@@ -4,7 +4,7 @@ var S = {
     var timeText = 'Starting Clock';
     var secondText = '00m : 00s';
     var t= '';
-    var deadline = new Date("Aug 17, 2021 18:00:00").getTime();
+    var deadline = new Date("Aug 18, 2021 09:00:00").getTime();
     function checktime(){
       var now = new Date().getTime(); 
       t = deadline - now;
