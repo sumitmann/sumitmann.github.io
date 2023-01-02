@@ -4,79 +4,40 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,height=device-height">
   <title>CodePen Demo</title>
 <style type="text/css">
-header, footer {
-  position: fixed;
-  text-align: center;
-  width: 100%;
-  background-color: blue;
+.sidenav {
+  height: 100vh; // Change to 100% will display properly in mobile browser
+}
+
+.sidenav__content {
+  background-color: purple;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 20px;
+  width: 300px;
+}
+
+p {
   color: white;
-  height: 48px;
-  line-height: 48px;
+  font-size: 2rem;
 }
 
-header {
-  top: 0;
+button {
+  background: white;
+  color: purple;
+  font-size: 1.5rem;
+  padding: 10px;
 }
-
-footer {
-  bottom: 0
-}
-
-footer input {
-  width: 50%;
-}
-
-main {
-  padding: 48px 0;
-  background-color: yellow;
-  color: red;
-  width: 100%;
-}
-
-/*To prevent auto-zoom in Safari*/
-/* .safari input[type='text'] {
-  font-size: 16px;
-} */
 </style></head>
 
 <body>
-<header>
-    Fixed Header
-  </header>
-  <main>
-    <p>
-      <input type="text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>     
-  </main>
-  <footer>
-    <input type="text"/>   
-  </footer>
-  <script>
-//     (function setPlatformInfo() {
-//   var ua = navigator.userAgent.toLowerCase(); 
-//   if (ua.indexOf('safari') != -1) { 
-//     if (ua.indexOf('chrome') > -1) {
-//       document.body.classList.add('chrome');
-//     } else {
-//       document.body.classList.add('safari');
-//     }
-//   }
-// })();
-  </script>
+<div class="sidenav">
+  <input type="text">
+      <div class="sidenav__content">
+        <p>Example content of the Sidenav</p>
+        <button>Log out</button>
+      </div>
+    </div>
 </body></html>
