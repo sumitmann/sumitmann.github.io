@@ -43,24 +43,22 @@ button {
 <script>
 const inputEle = document.querySelector('.input');
 const buttonEle = document.querySelector('.button');
-const buttonTwoEle = document.querySelector('.buttontwo');
+// const buttonTwoEle = document.querySelector('.buttontwo');
 const bottomone = document.querySelector('.bottomone');
 const innerheightone = document.querySelector('.innerheightone');
-const bottomtwo = document.querySelector('.bottomtwo');
-const innerheighttwo = document.querySelector('.innerheighttwo');
+// const bottomtwo = document.querySelector('.bottomtwo');
+// const innerheighttwo = document.querySelector('.innerheighttwo');
 const setPosition = () => {
   const btop = buttonEle.getBoundingClientRect().top;
   const bht = buttonEle.getBoundingClientRect().height;
   const bottom = btop + bht;
+  bottomone.textContent = bottom + 'px';
+  innerheightone.textcontent = window.innerHeight;
   if (bottom >= window.innerHeight) {
     const b = window.innerHeight - bottom + 'px';
     buttonEle.style.bottom = b;
     buttonEle.textContent = b;
-    bottomone.textContent = bottom;
-    innerheightone.textcontent = window.innerHeight;
   } else {
-    bottomone.textContent = '24px';
-    innerheightone.textcontent = window.innerHeight;
     buttonEle.style.bottom = '24px';
     buttonEle.textContent = '24px';
   }
@@ -77,24 +75,24 @@ inputEle.addEventListener('blur', (event) => {
   }, 100)
 });
   
- const viewport = window.visualViewport;
+//  const viewport = window.visualViewport;
 
-function resizeHandler() {
-  const bttop = buttonTwoEle.getBoundingClientRect().top;
-  const btht = buttonTwoEle.getBoundingClientRect().height;
-  const bottomt = bttop + btht;
-  bottomtwo.textContent = bottomt;
-  innerheighttwo.textcontent = window.innerHeight;
-  if (Math.floor(bottomt) > window.innerHeight) {
-    const b = window.innerHeight - bottomt + 'px';
-    buttonTwoEle.style.bottom = b;
-    buttonTwoEle.textContent = b;
-  } else {
-    buttonTwoEle.style.bottom = '24px';
-    buttonTwoEle.textContent = '24px';
-  }
-}
+// function resizeHandler() {
+//   const bttop = buttonTwoEle.getBoundingClientRect().top;
+//   const btht = buttonTwoEle.getBoundingClientRect().height;
+//   const bottomt = bttop + btht;
+//   bottomtwo.textContent = bottomt;
+//   innerheighttwo.textcontent = window.innerHeight;
+//   if (Math.floor(bottomt) > window.innerHeight) {
+//     const b = window.innerHeight - bottomt + 'px';
+//     buttonTwoEle.style.bottom = b;
+//     buttonTwoEle.textContent = b;
+//   } else {
+//     buttonTwoEle.style.bottom = '24px';
+//     buttonTwoEle.textContent = '24px';
+//   }
+// }
 
-window.visualViewport.addEventListener('resize', resizeHandler);
+// window.visualViewport.addEventListener('resize', resizeHandler);
     </script>
 </body></html>
