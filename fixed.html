@@ -41,6 +41,7 @@ button {
  <button class="button">Fixed</button>
  <button class="buttontwo">Fixed</button>
 <script>
+const viewport = window.visualViewport;
 const inputEle = document.querySelector('.input');
 const buttonEle = document.querySelector('.button');
 // const buttonTwoEle = document.querySelector('.buttontwo');
@@ -53,9 +54,10 @@ const setPosition = () => {
   const bht = buttonEle.getBoundingClientRect().height;
   const bottom = btop + bht;
   bottomone.textContent = bottom + 'px';
-  innerheightone.textcontent = window.innerHeight;
-  if (bottom >= window.innerHeight) {
-    const b = window.innerHeight - bottom + 'px';
+  const viewportHeight = viewport.height;
+  innerheightone.textcontent = viewportHeight;
+  if (bottom >= viewportHeight) {
+    const b = viewportHeight - bottom + 'px';
     buttonEle.style.bottom = b;
     buttonEle.textContent = b;
   } else {
