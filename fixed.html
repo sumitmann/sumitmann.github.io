@@ -50,8 +50,10 @@ const innerheightone = document.querySelector('.innerheightone');
 const bottomtwo = document.querySelector('.bottomtwo');
 const innerheighttwo = document.querySelector('.innerheighttwo');
 const setPosition = () => {
-  const { bottom } = buttonEle.getBoundingClientRect();
-  if (Math.floor(bottom) > window.innerHeight) {
+  const btop = buttonEle.getBoundingClientRect().top;
+  const bht = buttonEle.getBoundingClientRect().height;
+  const bottom = top + height;
+  if (bottom >= window.innerHeight) {
     const b = window.innerHeight - bottom + 'px';
     buttonEle.style.bottom = b;
     buttonEle.textContent = b;
@@ -79,11 +81,13 @@ inputEle.addEventListener('blur', (event) => {
  const viewport = window.visualViewport;
 
 function resizeHandler() {
-  const { bottom } = buttonTwoEle.getBoundingClientRect();
-  bottomtwo.textContent = bottom;
+  const bttop = buttonTwoEle.getBoundingClientRect().top;
+  const btht = buttonTwoEle.getBoundingClientRect().height;
+  const bottomt = top + height;
+  bottomtwo.textContent = bottomt;
   innerheighttwo.textcontent = window.innerHeight;
-  if (Math.floor(bottom) > window.innerHeight) {
-    const b = window.innerHeight - bottom + 'px';
+  if (Math.floor(bottomt) > window.innerHeight) {
+    const b = window.innerHeight - bottomt + 'px';
     buttonTwoEle.style.bottom = b;
     buttonTwoEle.textContent = b;
   } else {
