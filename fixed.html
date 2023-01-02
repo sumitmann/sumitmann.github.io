@@ -4,24 +4,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,height=device-height">
   <title>CodePen Demo</title>
 <style type="text/css">
-.sidenav {
-  height: 2000px;
-}
 
 .sidenav__content {
-  background-color: purple;
+  
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
   padding: 20px;
-  width: 300px;
-}
-
-p {
   color: white;
-  font-size: 2rem;
+  font-size: 16px;
+  background-color: purple;
+  height: 2000px;
 }
 
 button {
@@ -32,26 +27,39 @@ button {
   position: fixed;
   bottom: 0;
 }
+  .buttontwo {
+    right: 0;
 </style></head>
 
 <body>
-<div class="sidenav">
-  <input type="text" class="input">
-      <div class="sidenav__content">
-        <p>Example content of the Sidenav</p>
-        <button class="button">Log out</button>
-      </div>
-    </div>
+<div class="sidenav__content">
+    <input type="text" class="input">
+    <div class="bottomone"></div>
+    <div class="innerheightone"></div>
+    <div class="bottomtwo"></div>
+    <div class="innerheighttwo"></div>
+</div>
+ <button class="button">Fixed</button>
+ <button class="buttontwo">Fixed</button>
 <script>
 const inputEle = document.querySelector('.input');
 const buttonEle = document.querySelector('.button');
+const buttonTwoEle = document.querySelector('.buttontwo');
+const bottomone = document.querySelector('.bottomone');
+const innerheightone = document.querySelector('.innerheightone');
+const bottomtwo = document.querySelector('.bottomtwo');
+const innerheighttwo = document.querySelector('.innerheighttwo');
 const setPosition = () => {
   const { bottom } = buttonEle.getBoundingClientRect();
   if (Math.floor(bottom) > window.innerHeight) {
     const b = window.innerHeight - bottom + 'px';
     buttonEle.style.bottom = b;
     buttonEle.textContent = b;
+    bottomone.textContent = bottom;
+    innerheightone.textcontent = window.innerHeight;
   } else {
+    bottomone.textContent = '24px';
+    innerheightone.textcontent = window.innerHeight;
     buttonEle.style.bottom = '24px';
     buttonEle.textContent = '24px';
   }
@@ -67,5 +75,23 @@ inputEle.addEventListener('blur', (event) => {
     setPosition();
   }, 100)
 });
+  
+ const viewport = window.visualViewport;
+
+function resizeHandler() {
+  const { bottom } = buttonTwoEle.getBoundingClientRect();
+  bottomtwo.textContent = bottom;
+  innerheighttwo.textcontent = window.innerHeight;
+  if (Math.floor(bottom) > window.innerHeight) {
+    const b = window.innerHeight - bottom + 'px';
+    buttonTwoEle.style.bottom = b;
+    buttonTwoEle.textContent = b;
+  } else {
+    buttonTwoEle.style.bottom = '24px';
+    buttonTwoEle.textContent = '24px';
+  }
+}
+
+window.visualViewport.addEventListener('resize', resizeHandler);
     </script>
 </body></html>
