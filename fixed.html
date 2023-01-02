@@ -36,10 +36,32 @@ button {
 
 <body>
 <div class="sidenav">
-  <input type="text">
+  <input type="text" class="input">
       <div class="sidenav__content">
         <p>Example content of the Sidenav</p>
-        <button>Log out</button>
+        <button class="button">Log out</button>
       </div>
     </div>
+<script>
+const inputEle = document.querySelector('.input');
+const buttonEle = document.querySelector('.button');
+const setPosition = () => {
+  const { bottom } = buttonEle.getBoundingClientRect();
+  if (Math.floor(bottom) > window.innerHeight) {
+    const b = window.innerHeight - bottom + 'px';
+    buttonEle.style.bottom = b;
+    buttonEle.textContent = b;
+  } else {
+    buttonEle.style.bottom = '24px';
+    buttonEle.textContent = '24px';
+  }
+};
+inputEle.addEventListener('focus', (event) => {
+  setPosition();
+});
+
+inputEle.addEventListener('blur', (event) => {
+  setPosition();
+});
+    </script>
 </body></html>
