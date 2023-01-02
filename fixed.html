@@ -34,9 +34,9 @@ main {
 }
 
 /*To prevent auto-zoom in Safari*/
-.safari input[type='text'] {
+/* .safari input[type='text'] {
   font-size: 16px;
-}
+} */
 </style></head>
 
 <body>
@@ -67,15 +67,15 @@ main {
     <input type="text"/>   
   </footer>
   <script>
-    (function setPlatformInfo() {
-  var ua = navigator.userAgent.toLowerCase(); 
-  if (ua.indexOf('safari') != -1) { 
-    if (ua.indexOf('chrome') > -1) {
-      document.body.classList.add('chrome');
-    } else {
-      document.body.classList.add('safari');
-    }
-  }
-})();
+//     (function setPlatformInfo() {
+//   var ua = navigator.userAgent.toLowerCase(); 
+//   if (ua.indexOf('safari') != -1) { 
+//     if (ua.indexOf('chrome') > -1) {
+//       document.body.classList.add('chrome');
+//     } else {
+//       document.body.classList.add('safari');
+//     }
+//   }
+// })();
   </script>
 </body></html>
