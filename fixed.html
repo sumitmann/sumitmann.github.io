@@ -57,7 +57,7 @@ const setPosition = () => {
   const viewportHeight = viewport.height;
   innerheightone.textcontent = viewportHeight;
   if (bottom >= viewportHeight) {
-    const b = (bottom - viewportHeight) + 'px';
+    const b = (bottom + 24 - viewportHeight) + 'px';
     buttonEle.style.bottom = b;
     buttonEle.textContent = b;
   } else {
