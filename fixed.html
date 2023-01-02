@@ -57,11 +57,15 @@ const setPosition = () => {
   }
 };
 inputEle.addEventListener('focus', (event) => {
-  setPosition();
+  setTimeout(() => {
+    setPosition();
+  }, 100)
 });
 
 inputEle.addEventListener('blur', (event) => {
-  setPosition();
+  setTimeout(() => {
+    setPosition();
+  }, 100)
 });
     </script>
 </body></html>
