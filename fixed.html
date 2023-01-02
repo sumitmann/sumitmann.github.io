@@ -4,74 +4,78 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
   <title>CodePen Demo</title>
 <style type="text/css">
-body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-
-html {
-  height: -webkit-fill-available;
-}
-
-:root {
-  font-size: calc(1vw + 1vh + .625vmin);
-}
-
-body {
-  display: flex; 
-  flex-direction: column;
-  font-family: -apple-system, 
-    BlinkMacSystemFont, 
-    "Segoe UI", 
-    Roboto, 
-    Oxygen-Sans, 
-    Ubuntu, 
-    Cantarell, 
-    "Helvetica Neue", 
-    sans-serif;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0;
-}
-
-header,
-main,
-footer {
-  padding: 1rem;
+header, footer {
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  background-color: blue;
+  color: white;
+  height: 48px;
+  line-height: 48px;
 }
 
 header {
-  background-color: #001f3f;
-  color: #80bfff;
-}
-
-main {
-  flex: 1;
+  top: 0;
 }
 
 footer {
-  background-color: #0074d9;
-  color: #b3dbff;
+  bottom: 0
 }
 
-a {
-  color: #0074d9;
+footer input {
+  width: 50%;
 }
 
-@media only screen and (max-width: 48rem) {
-   body {
-      font-size: 1.325rem;
-   }
+main {
+  padding: 48px 0;
+  background-color: yellow;
+  color: red;
+  width: 100%;
+}
+
+/*To prevent auto-zoom in Safari*/
+.safari input[type='text'] {
+  font-size: 16px;
 }
 </style></head>
 
 <body>
-<header>HEADER GOES HERE</header>
-<main>
-  <input type="text">
-  <p>Now eventually you do plan to have  on your dinosaur tour? I thought you were one of your big brothers. There’s no unauthorized breeding in Jurassic Park.</p>
-  <p>Amphibian DNA. When you gotta go, you gotta go. I bring scientists, you bring a rockstar. Uh uh uh!…You didn’t say the magic word! That is one big pile of shit.</p>
-  <p>Are these characters…auto…erotica? They show extreme intelligence, even problem-solving intelligence. Hold onto your butts. Dinosaurs eat man; woman inherits the earth. Clever girl.</p>
-</main>
-<footer>FOOTER GOES HERE</footer>
+<header>
+    Fixed Header
+  </header>
+  <main>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>     
+  </main>
+  <footer>
+    <input type="text"/>   
+  </footer>
+  <script>
+    (function setPlatformInfo() {
+  var ua = navigator.userAgent.toLowerCase(); 
+  if (ua.indexOf('safari') != -1) { 
+    if (ua.indexOf('chrome') > -1) {
+      document.body.classList.add('chrome');
+    } else {
+      document.body.classList.add('safari');
+    }
+  }
+})();
+  </script>
 </body></html>
