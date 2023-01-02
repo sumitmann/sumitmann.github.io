@@ -51,7 +51,7 @@ const innerheighttwo = document.querySelector('.innerheighttwo');
 const setPosition = () => {
   const btop = buttonEle.getBoundingClientRect().top;
   const bht = buttonEle.getBoundingClientRect().height;
-  const bottom = top + height;
+  const bottom = btop + bht;
   if (bottom >= window.innerHeight) {
     const b = window.innerHeight - bottom + 'px';
     buttonEle.style.bottom = b;
@@ -82,7 +82,7 @@ inputEle.addEventListener('blur', (event) => {
 function resizeHandler() {
   const bttop = buttonTwoEle.getBoundingClientRect().top;
   const btht = buttonTwoEle.getBoundingClientRect().height;
-  const bottomt = top + height;
+  const bottomt = bttop + btht;
   bottomtwo.textContent = bottomt;
   innerheighttwo.textcontent = window.innerHeight;
   if (Math.floor(bottomt) > window.innerHeight) {
