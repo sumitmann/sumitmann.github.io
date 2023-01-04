@@ -1,100 +1,67 @@
-<html lang="en" class=""><head>
-
+<html lang="en" class="">
+  <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,height=device-height">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <title>CodePen Demo</title>
 <style type="text/css">
-
-.sidenav__content {
-  
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+ body,
+html {
   height: 100%;
-  padding: 20px;
-  color: white;
-  font-size: 16px;
-  background-color: purple;
-  height: 2000px;
+  overflow:hidden;
+  padding: 0;
+  margin: 0;
+}
+.main {
+  height: 100%;
+  overflow-y: auto;
 }
 
-button {
-  background: white;
-  color: purple;
-  font-size: 1.5rem;
-  padding: 10px;
-  position: fixed;
-  bottom: 24px;
+.text {
+  padding: 80px 20px;
 }
-  .buttontwo {
-    right: 0;
-</style></head>
+
+.editable {
+border: none;
+color: #1e242c;
+font-size: 120px;
+font-style: normal;
+font-weight: 400;
+height: auto;
+letter-spacing: -.02em;
+min-height: 50px;
+outline: none;
+position: relative;
+resize: none;
+width: 100%;
+margin: 30px 10px;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: green;
+  width: 200px;
+  height: 40px;
+  border-radius: 20px;
+}</style>
+  
+</head>
 
 <body>
-<div class="sidenav__content">
-    <input type="text" class="input">
-    <div class="bottomone"></div>
-    <div class="innerheightone"></div>
-    <div class="bottomtwo"></div>
-    <div class="innerheighttwo"></div>
+<div class="main">
+  <div class="text">
+  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, 
+<div class="editable" contenteditable="">
+  Editable Text
 </div>
- <button class="button">Fixed</button>
- <button class="buttontwo">Fixed</button>
-<script>
-const viewport = window.visualViewport;
-const inputEle = document.querySelector('.input');
-const buttonEle = document.querySelector('.button');
-// const buttonTwoEle = document.querySelector('.buttontwo');
-const bottomone = document.querySelector('.bottomone');
-const innerheightone = document.querySelector('.innerheightone');
-// const bottomtwo = document.querySelector('.bottomtwo');
-// const innerheighttwo = document.querySelector('.innerheighttwo');
-const setPosition = () => {
-  const btop = buttonEle.getBoundingClientRect().top;
-  const bht = buttonEle.getBoundingClientRect().height;
-  const bottom = btop + bht;
-  bottomone.textContent = bottom + 'px';
-  const viewportHeight = viewport.height;
-  innerheightone.textcontent = viewportHeight;
-  if (bottom >= viewportHeight) {
-    const b = (bottom + 24 - viewportHeight) + 'px';
-    buttonEle.style.bottom = b;
-    buttonEle.textContent = b;
-  } else {
-    buttonEle.style.bottom = '24px';
-    buttonEle.textContent = '24px';
-  }
-};
-inputEle.addEventListener('focus', (event) => {
-  setTimeout(() => {
-    setPosition();
-  }, 100)
-});
-
-inputEle.addEventListener('blur', (event) => {
-  setTimeout(() => {
-    setPosition();
-  }, 100)
-});
-  
-//  const viewport = window.visualViewport;
-
-// function resizeHandler() {
-//   const bttop = buttonTwoEle.getBoundingClientRect().top;
-//   const btht = buttonTwoEle.getBoundingClientRect().height;
-//   const bottomt = bttop + btht;
-//   bottomtwo.textContent = bottomt;
-//   innerheighttwo.textcontent = window.innerHeight;
-//   if (Math.floor(bottomt) > window.innerHeight) {
-//     const b = window.innerHeight - bottomt + 'px';
-//     buttonTwoEle.style.bottom = b;
-//     buttonTwoEle.textContent = b;
-//   } else {
-//     buttonTwoEle.style.bottom = '24px';
-//     buttonTwoEle.textContent = '24px';
-//   }
-// }
-
-// window.visualViewport.addEventListener('resize', resizeHandler);
-    </script>
+    
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<div>
+  <div class="fixed">
+  </div>
+</div>
+</div></div>
 </body></html>
