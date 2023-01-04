@@ -13,6 +13,7 @@ html {
 }
 .main {
   height: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
   top: 0;
@@ -41,13 +42,18 @@ resize: none;
 width: 100%;
 margin: 30px 10px;
 }
-
-.fixed {
+  
+.fixed-wrapper {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+ }
+
+.fixed {
   background: green;
   width: 200px;
   height: 40px;
@@ -63,11 +69,11 @@ margin: 30px 10px;
 <div class="editable" contenteditable="">
   Editable Text
 </div>
-    
     but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-<div>
+</div>
   <div class="fixed">
+    <div class="fixed">
+    </div>
   </div>
 </div>
-</div></div>
 </body></html>
