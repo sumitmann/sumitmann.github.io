@@ -56,10 +56,8 @@
         }
         generateRandomButton.addEventListener("click", function() {
             generateRandomButton.classList.add('is-disabled');
-            if(counter > 5) {
-                counter = 1;
-            }
-            playerbg.src = 'holi-'+counter+'.mp3';
+            playerbg.src = 'bg-s.mp3';
+            
             playerbg.muted = false;
             animateText();
             playerbg.play();
@@ -81,13 +79,13 @@
             generateRandomButton.classList.remove('is-disabled');
             clearInterval(interval);
             if(counter == 1) {
-                setNumber(eIds_a); 
+                setNumber(['Ekansh']); 
             }
             if(counter == 2) {
-                setNumber(eIds_b);
+                setNumber(['Manvi']);
             }
             if(counter == 3) {
-                setNumber(eIds_c);
+                setNumber(['Ekansh']);
             }
             counter++;
         });
