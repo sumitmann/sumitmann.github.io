@@ -26,6 +26,7 @@
   <br><span data-letter=M>M</span><span data-letter=A>A</span><span data-letter=N>N</span><span data-letter=N>N</span></h1></div>
 <script>
 function changeVariableProps(e){let t=0,n=0;if("touchmove"==e.type){let o=e.touches[0]||e.changedTouches[0];t=o.pageX,n=o.pageY}else t=e.pageX,n=e.pageY;let o=document.querySelector(".container"),a=o.clientWidth,c=o.clientHeight;769<=a&&(o.querySelector("h1").style["font-variation-settings"]="'wght' "+(200+n/c*100*5)+", 'wdth' "+t/a*100*2)}document.addEventListener("mousemove",changeVariableProps,!1),document.addEventListener("touchmove",changeVariableProps,!1);
+function changeBackgroundGradient(){var a="linear-gradient(-45deg, rgb("+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+"), rgb("+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+"), rgb("+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+"), rgb("+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+", "+Math.floor(256*Math.random())+"))";document.querySelector(".container").style.background=a}document.body.addEventListener("click",changeBackgroundGradient);
 </script>
 </body>
 </html>
