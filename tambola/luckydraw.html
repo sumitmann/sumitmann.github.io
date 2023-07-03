@@ -46,7 +46,12 @@
         const numBox = document.getElementById("numbox");
 
         function generateRandom(count) {
-            return Math.floor(Math.random() * (count + 1));
+            var randomDecimal = Math.random();
+            if (randomDecimal < 0.5) {
+              return 1;
+            } else {
+              return 2;
+            }
         } 
         function animateText() {
             interval = setInterval(() => {
@@ -63,14 +68,13 @@
             playerbg.play();
         })
 
-        function setNumber(ar) {
+        function setNumber() {
             setTimeout(() => {
-                let random = generateRandom(ar.length);
-                if(ar[random]) {
-                    numBox.textContent = ar[random];
+                let random = generateRandom();
+                if(random === 1) {
+                    numBox.textContent = 'Ekansh';
                 } else {
-                    numBox.textContent = 'Try Again :P';
-                    counter--;
+                    numBox.textContent = 'Manvi';
                 }
             }, 50);
         }
@@ -78,15 +82,7 @@
         playerbg.addEventListener('ended', function () {
             generateRandomButton.classList.remove('is-disabled');
             clearInterval(interval);
-            if(counter == 1) {
-                setNumber(['Ekansh']); 
-            }
-            if(counter == 2) {
-                setNumber(['Manvi']);
-            }
-            if(counter == 3) {
-                setNumber(['Ekansh']);
-            }
+            setNumber();
             counter++;
         });
 
