@@ -71,10 +71,14 @@
         function setNumber() {
             setTimeout(() => {
                 let random = generateRandom();
-                if(random === 1) {
-                    numBox.textContent = 'Ekansh';
-                } else {
-                    numBox.textContent = 'Manvi';
+                if(counter == 1) {
+                  setNumber(eIds_a); 
+                }
+                if(counter == 2) {
+                    setNumber(eIds_b);
+                }
+                if(counter == 3) {
+                    setNumber(eIds_c);
                 }
             }, 50);
         }
