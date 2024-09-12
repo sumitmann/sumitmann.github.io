@@ -36,19 +36,13 @@
         const eIds_a = [1000009,1000012,1000022,1000034,1000035,1000043,1000056,1000072,1000074,1000090,1000095,1000179,1000186,1000192,1000204,1000215,1000238];
         const eIds_b = [600045,600065,600165,600201,600202,600220,600257,600262,600268,600269,600279,600320,600339,600421,600440,600443,600458,600459,600463,600464,600474,600480,600481,600487,600490,600500,600506,600508,600509,600510,600514,600517,600521,600534,600581,600586,600595,600597,600650,600652,600665,600666,600671,600674,600685,600694,600695,600697,600698,600699,600701,600702,600704,600708,600715,600716,600720,600721,600722,600723,600728,600733,600734,600746,600749,600750,600751,600752,600759,600761,600762,600763,600786,600798,600799,600802,600803,600810,600811,600816,600817,600818,600823,600825,600842,600843,600844,600845,600848,600849,600857,600858,600859,600861,600863,600864,600866,600868,600871,600872,600873,600875,600876,600877,600880,600881,600882,600889,600891,600892,600893,600896,600902,600903,600904,600905,600906,600910,600911,600912,600913,600914,600916,600919,600921,600922,600924,600925,600928,600929,600930,600931,600932,600934,600936,600938,600940,600941,600946,600948,600951,600952,600953,600956,600958,600960,600962,600964,600965,600967,600974,600977,600978,600982,600983,600984,600985,600991,600992,666945];
         const eIds_c = [999640,999644,999651,999653,999660,999664,999665,999667,999669,999671,999676,999678,999681,999709,999740,999741,999786,999802,999805,999831,999843,999892,999899,999951,999985,999986,999992,999996];
-        
         const allIds = eIds_a.concat(eIds_b, eIds_c);
         const generateRandomButton = document.getElementById("generateRandom");
         const playerbg = document.getElementById("playerbg");
         const numBox = document.getElementById("numbox");
 
         function generateRandom(count) {
-            var randomDecimal = Math.random();
-            if (randomDecimal < 0.5) {
-              return 1;
-            } else {
-              return 2;
-            }
+            return Math.floor(Math.random() * (count + 1));
         } 
         function animateText() {
             interval = setInterval(() => {
@@ -58,24 +52,23 @@
         }
         generateRandomButton.addEventListener("click", function() {
             generateRandomButton.classList.add('is-disabled');
-            playerbg.src = 'bg-s.mp3';
-            
+            if(counter > 5) {
+                counter = 1;
+            }
+            playerbg.src = 'holi-'+counter+'.mp3';
             playerbg.muted = false;
             animateText();
             playerbg.play();
         })
 
-        function setNumber() {
+        function setNumber(ar) {
             setTimeout(() => {
-                let random = generateRandom();
-                if(counter == 1) {
-                  setNumber(eIds_a); 
-                }
-                if(counter == 2) {
-                    setNumber(eIds_b);
-                }
-                if(counter == 3) {
-                    setNumber(eIds_c);
+                let random = generateRandom(ar.length);
+                if(ar[random]) {
+                    numBox.textContent = ar[random];
+                } else {
+                    numBox.textContent = 'Try Again :P';
+                    counter--;
                 }
             }, 50);
         }
@@ -83,7 +76,15 @@
         playerbg.addEventListener('ended', function () {
             generateRandomButton.classList.remove('is-disabled');
             clearInterval(interval);
-            setNumber();
+            if(counter == 1) {
+                setNumber(eIds_a); 
+            }
+            if(counter == 2) {
+                setNumber(eIds_b);
+            }
+            if(counter == 3) {
+                setNumber(eIds_c);
+            }
             counter++;
         });
 
